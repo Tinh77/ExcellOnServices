@@ -12,7 +12,7 @@ namespace AspNetDemo.Areas.Employee.Controllers
     {
         public static Models.Employee CurEmployee = new Models.Employee();
 
-        DemoAspContext db = new DemoAspContext();
+        ExcellOnServicesContext db = new ExcellOnServicesContext();
         // GET: Employee/Employee
         public ActionResult Index()
         {

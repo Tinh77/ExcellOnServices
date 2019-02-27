@@ -14,6 +14,19 @@ namespace AspNetDemo.Models
     
     public partial class OrderDetail
     {
+        public OrderDetail()
+        {
+
+        }
+
+        public OrderDetail(Service service, int numberOfEmployee, DateTime fromDate, DateTime toDate)
+        {
+            this.Service = service;
+            this.NumberOfEmployee = numberOfEmployee;
+            this.FromDate = fromDate;
+            this.ToDate = toDate;
+        }
+
         public int id { get; set; }
         public int UnitPrice { get; set; }
         public System.DateTime FromDate { get; set; }

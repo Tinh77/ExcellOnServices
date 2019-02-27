@@ -161,43 +161,46 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DemoAsp.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoAsp.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DemoAsp.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoAsp.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DemoAsp.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoAsp.edmx</DependentUpon>
+    <Compile Include="Models\database_firewall_rules.cs">
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EoSData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EoSData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EoSData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EoSData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EoSData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EoSData.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderService.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment_Method.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Service.cs">
-      <DependentUpon>DemoAsp.tt</DependentUpon>
+      <DependentUpon>EoSData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1911,15 +1914,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DemoAsp.Context.tt">
+    <Content Include="Models\EoSData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DemoAsp.edmx</DependentUpon>
-      <LastGenOutput>DemoAsp.Context.cs</LastGenOutput>
+      <DependentUpon>EoSData.edmx</DependentUpon>
+      <LastGenOutput>EoSData.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DemoAsp.tt">
+    <Content Include="Models\EoSData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DemoAsp.edmx</DependentUpon>
-      <LastGenOutput>DemoAsp.cs</LastGenOutput>
+      <DependentUpon>EoSData.edmx</DependentUpon>
+      <LastGenOutput>EoSData.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2080,13 +2083,6 @@
     <Content Include="Areas\Customer\Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Employee\Views\web.config" />
-    <EntityDeploy Include="Models\DemoAsp.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DemoAsp.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DemoAsp.edmx.diagram">
-      <DependentUpon>DemoAsp.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Customer\Views\Register\Index.cshtml" />
     <Content Include="Areas\Customer\Views\Login\Index.cshtml" />
     <Content Include="Areas\Customer\Views\Dashboard\Index.cshtml" />
@@ -2102,6 +2098,14 @@
     <Content Include="Content\HomeAssets\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\HomeAssets\lib\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Areas\Customer\Views\Cart\Index.cshtml" />
+    <EntityDeploy Include="Models\EoSData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EoSData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EoSData.edmx.diagram">
+      <DependentUpon>EoSData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Customer\Views\Cart\Success.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
