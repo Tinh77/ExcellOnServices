@@ -10,7 +10,7 @@ namespace AspNetDemo.Controllers
 {
     public class HomeController : Controller
     {
-        DemoAspContext db = new DemoAspContext();
+        ExcellOnServicesContext db = new ExcellOnServicesContext();
 
         public ActionResult Index()
         {

@@ -14,7 +14,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
 {
     public class RegisterController : Controller
     {
-        DemoAspContext db = new DemoAspContext();
+        ExcellOnServicesContext db = new ExcellOnServicesContext();
 
         // GET: Customer/Register
         [System.Web.Mvc.HttpGet]
@@ -48,7 +48,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
         [System.Web.Mvc.NonAction]
         public bool IsEmailExist(string email)
         {
-            using (DemoAspContext db = new DemoAspContext())
+            using (ExcellOnServicesContext db = new ExcellOnServicesContext())
             {
                 var v = db.Companies.Where(a => a.Email == email).FirstOrDefault();
                 return v != null;

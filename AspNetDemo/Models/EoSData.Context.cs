@@ -13,10 +13,10 @@ namespace AspNetDemo.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoAspContext : DbContext
+    public partial class ExcellOnServicesContext : DbContext
     {
-        public DemoAspContext()
-            : base("name=DemoAspContext")
+        public ExcellOnServicesContext()
+            : base("name=ExcellOnServicesContext")
         {
         }
     
@@ -33,5 +33,6 @@ namespace AspNetDemo.Models
         public virtual DbSet<OrderService> OrderServices { get; set; }
         public virtual DbSet<Payment_Method> Payment_Method { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
     {
         public static Company CurCompany = new Company();
 
-        DemoAspContext db = new DemoAspContext();
+        ExcellOnServicesContext db = new ExcellOnServicesContext();
         // GET: Customer/Login
         public ActionResult Index()
         {
