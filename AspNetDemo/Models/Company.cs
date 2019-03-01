@@ -17,6 +17,7 @@ namespace AspNetDemo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
+            this.OrderServices = new HashSet<OrderService>();
             this.Services = new HashSet<Service>();
         }
     
@@ -33,6 +34,8 @@ namespace AspNetDemo.Models
         public string Password { get; set; }
     
         public virtual Payment_Method Payment_Method { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderService> OrderServices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Service> Services { get; set; }
     }

@@ -27,7 +27,9 @@ namespace AspNetDemo.Models
         public System.DateTime PaymentDate { get; set; }
         public System.DateTime BillDate { get; set; }
         public int Status { get; set; }
+        public int Company_Id { get; set; }
     
+        public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

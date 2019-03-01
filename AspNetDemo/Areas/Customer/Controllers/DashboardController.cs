@@ -9,7 +9,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
 {
     public class DashboardController : Controller
     {
-        DemoAspContext db = new DemoAspContext();
+        ExcellOnServicesContext db = new ExcellOnServicesContext();
 
         // GET: Customer/Dashboard
         public ActionResult Index()

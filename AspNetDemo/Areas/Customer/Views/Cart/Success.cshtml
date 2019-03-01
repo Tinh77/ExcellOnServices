@@ -1,8 +1,7 @@
 ﻿@using AspNetDemo.Models
-@model List<Service>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Success";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
@@ -196,71 +195,19 @@
     <!-- Top Bar End -->
 }
 
-<table class="table table-dark table-hover">
-
-    @{
-        decimal total = 0;
-    }
-    <tr>
-        <th>Option</th>
-        <th>Id</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Sub Total</th>
-    </tr>
-    @foreach (var item in (List<OrderDetail>)Session["cart"])
-    {
-        <tr>
-            <td>@Html.ActionLink("Delete", "Delete", "Cart", new { Area = "Customer", id = item.Service.Id }, null)</td>
-            <td>@item.Service.Id</td>
-            <td><img src="" style="width: 200px; height: 150px" /></td>
-            <td>@item.Service.Name</td>
-            <td>@item.NumberOfEmployee</td>
-            <td>@item.Service.Price</td>
-            @{ 
-                string[] v = (item.ToDate - item.FromDate).ToString().Split('.');
-                int c = Int32.Parse(v[0]);
-            }
-                <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c)</td>
-            @{
-                var listP = new List<int>();
-                listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c);
-                total += listP.Sum(x => x);
-            }
-        </tr>
-    }
-</table>
-<br />
-<br />
-<div class="container clearfix">
-    <div style="float: left">
-        <h1 class="total">Total: <span>@total</span>($)</h1>
-        <br>
-        <fieldset>
-            <center>@Html.ActionLink("Continue Shopping", "ProductDetail", "Home", new { Area = "" }, null)</center>
-        </fieldset>
-    </div>
-    <div style="width: 300px; float: right">
-        <h1>Bill Details</h1>
-        <form method="post">
-            <br>
-            <fieldset>
-                <input style="width: 300px" id="uniqueDescription" placeholder="Your Message" name="shipName" type="text" tabindex="1" required="required" autofocus>
-            </fieldset>
-            <br>
-            <fieldset>
-                <center>
-                    <input class="btn-default btn" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()" value="Checkout" />
-                </center>
-            </fieldset>
-        </form>
-    </div>
+<div class="alert alert-success">
+    <strong>Success!</strong> Your Order has been received. Click <a href="@Url.Action("Index","Home", new {area = ""})">here</a> to return Home
 </div>
+
 
 @section Scripts
 {
+    <script>
+        // auto reload 3s
+        var timer = setTimeout(function() {
+            window.location = '@Url.Action("Index","Home", new {area = ""})';
+        }, 3000);
+    </script>
 
 }
 
