@@ -2514,6 +2514,10 @@
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeActive.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeDeactive.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ListServices.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ListOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ListOrder_Active.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ListOrder_Deactive.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
