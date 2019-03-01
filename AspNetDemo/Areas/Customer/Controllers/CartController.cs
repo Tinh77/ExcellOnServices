@@ -97,9 +97,10 @@ namespace AspNetDemo.Areas.Customer.Controllers
                     orderDetail.NumberOfEmployee = cart[i].NumberOfEmployee;
                     orderDetail.FromDate = cart[i].FromDate;
                     orderDetail.ToDate = cart[i].ToDate;
+                    db.OrderDetails.Add(orderDetail);
+                    db.SaveChanges();
                 }
-                db.OrderDetails.Add(orderDetail);
-                db.SaveChanges();
+
                 Session.Remove("cart");
             }
             return View("Success");
