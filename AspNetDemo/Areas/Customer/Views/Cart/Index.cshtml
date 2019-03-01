@@ -219,10 +219,14 @@
             <td>@item.Service.Name</td>
             <td>@item.NumberOfEmployee</td>
             <td>@item.Service.Price</td>
-            <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * 5)</td>
+            @{ 
+                string[] v = (item.ToDate - item.FromDate).ToString().Split('.');
+                int c = Int32.Parse(v[0]);
+            }
+                <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c)</td>
             @{
                 var listP = new List<int>();
-                listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * 5);
+                listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c);
                 total += listP.Sum(x => x);
             }
         </tr>

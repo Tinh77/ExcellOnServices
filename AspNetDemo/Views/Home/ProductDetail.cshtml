@@ -1,4 +1,5 @@
-﻿@using AspNetDemo.Models
+﻿@using System.Web.UI.WebControls
+@using AspNetDemo.Models
 @model AspNetDemo.Models.Service
 
 @{
@@ -156,37 +157,29 @@
                                         Your email address will not be published. Required fields are marked
                                         *
                                     </span>
-                                    <form action="#">
+                                    <form action="#" name="serviceForm">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <p>Số lượng nhân viên</p>
-                                                <input id="numberEmployee" name="NumberOfEmployee" value="5" type="number" />
+                                                <input id="NumberOfEmployee" name="NumberOfEmployee"  value="5" type="number" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <p>Thời gian thuê</p>
-                                                <input type="text" name="daterange" id="daterange" />
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <p>Tổng số tiền</p>
-                                                @{
-                                                    int total = 0;
-                                                    total = (Int32.Parse(@Model.Price) * 5 * 5);
-                                                }
-                                                <p>@total</p>
+                                                <input type="text" name="daterange" id="daterange"/>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
                                                 <p>Yêu cầu thêm</p>
                                                 <textarea id="message-box" cols="30" rows="10"></textarea>
                                                 @{
                                                     Company comp = new Company();
-                                                    comp = (Company) Session["CompanyLogin"];
+                                                    comp = (Company)Session["CompanyLogin"];
                                                     if (comp != null)
                                                     {
-                                                        <input type="submit" value="Payment now" onclick="location.href = '@Url.Action("AddtoCart", "Cart", new {area = "Customer"})?id=' + @Model.Id + '&numberOfEmployee=' + $('#numberEmployee').val() + '&date=' + $('#daterange').val() + '&message=' + $('#message-box').val()"/>
+                                                        <a class="btn btn-default" id="payment">Add to Cart</a>
                                                     }
                                                     else
                                                     {
-                                                        <input type="submit" value="Payment now" onclick="location.href = '@Url.Action("Index", "Login", new {area = "Customer"})'"/> 
+                                                        <a class="btn btn-default" href="@Url.Action("Index", "Login", new {area = "Customer"})">Login and Order</a>
                                                     }
                                                 }
                                             </div>
@@ -208,7 +201,7 @@
                                     <div class="recent-single-post">
                                         <div class="post-img">
                                             <a href="#">
-                                                <img src="img/blog/2.jpg" alt="">
+                                                <img src="../../Content/HomeAssets/img/blog/2.jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="pst-content">
@@ -220,7 +213,7 @@
                                     <div class="recent-single-post">
                                         <div class="post-img">
                                             <a href="#">
-                                                <img src="img/blog/3.jpg" alt="">
+                                                <img src="../../Content/HomeAssets/img/blog/3.jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="pst-content">
@@ -232,7 +225,7 @@
                                     <div class="recent-single-post">
                                         <div class="post-img">
                                             <a href="#">
-                                                <img src="img/blog/4.jpg" alt="">
+                                                <img src="../../Content/HomeAssets/img/blog/4.jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="pst-content">
@@ -365,5 +358,15 @@
     <!-- end datetime picker -->
     <script src="../../Content/HomeAssets/js/main.js"></script>
     <script src="../../Content/HomeAssets/js/script.js"></script>
+    <script>
+       var btn_payment = document.getElementById("payment");
+        btn_payment.onclick = function() {
+            var employee = document.getElementById("NumberOfEmployee");
+            var daterange = document.getElementById("daterange");
+
+            window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + employee.value + '&date=' + daterange.value;
+
+        }
+    </script>
 </body>
 </html>
