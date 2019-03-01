@@ -1,5 +1,6 @@
-﻿@using System.Web.UI.WebControls
+﻿﻿@using System.Web.UI.WebControls
 @using AspNetDemo.Models
+﻿@using AspNetDemo.Models
 @model AspNetDemo.Models.Service
 
 @{
@@ -35,6 +36,8 @@
     <link href="../../Content/HomeAssets/css/style.css" rel="stylesheet">
     <!-- Responsive Stylesheet File -->
     <link href="../../Content/HomeAssets/css/responsive.css" rel="stylesheet">
+    <!-- my style -->
+    <link href="../../Content/HomeAssets/css/myStyle.css" rel="stylesheet">
     <!-- datetime piker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- =======================================================
@@ -161,34 +164,46 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <p>Số lượng nhân viên</p>
-                                                <input id="NumberOfEmployee" name="NumberOfEmployee"  value="5" type="number" />
+                                                <input id="numberEmployee" name="NumberOfEmployee" value="5" type="number" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <p>Thời gian thuê</p>
-                                                <input type="text" name="daterange" id="daterange"/>
+                                                <input type="text" name="daterange" id="daterange" />
+                                                <div id="date-error" class="text-danger alert alert-danger error">Bạn hãy chọn đúng ngày thuê hiện tại</div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
-                                                <p>Yêu cầu thêm</p>
-                                                <textarea id="message-box" cols="30" rows="10"></textarea>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <p>Tổng số tiền</p>
                                                 @{
-                                                    Company comp = new Company();
-                                                    comp = (Company)Session["CompanyLogin"];
-                                                    if (comp != null)
-                                                    {
-                                                        <a class="btn btn-default" id="payment">Add to Cart</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a class="btn btn-default" href="@Url.Action("Index", "Login", new {area = "Customer"})">Login and Order</a>
-                                                    }
+                                                    int total = 0;
+                                                    total = (Int32.Parse(@Model.Price) * 5 * 5);
                                                 }
+                                                <p>@total</p>
                                             </div>
                                         </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
+                                            <p>Yêu cầu thêm</p>
+                                            <textarea id="message-box" cols="30" rows="10"></textarea>
+                                            @{
+                                                Company comp = new Company();
+                                                comp = (Company)Session["CompanyLogin"];
+                                                if (comp != null)
+                                                {
+                                                    <a class="btn btn-default" id="payment">Add to Cart</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-default" href="@Url.Action("Index", "Login", new {area = "Customer"})">Login and Order</a>
+
+                                                }
+                                            }
+                                        </div>
                                     </form>
+
                                 </div>
+
                             </div>
-                            <!-- single-blog end -->
                         </div>
+                        <!-- single-blog end -->
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -239,8 +254,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- End left sidebar -->
             </div>
+            <!-- End left sidebar -->
         </div>
     </div>
     <!-- End Blog Area -->
@@ -361,8 +376,26 @@
     <script>
        var btn_payment = document.getElementById("payment");
         btn_payment.onclick = function() {
-            var employee = document.getElementById("NumberOfEmployee");
+            var employee = document.getElementById("numberEmployee");
             var daterange = document.getElementById("daterange");
+            var dates = daterange.value.split(" - ");
+            var startDate = new Date(dates[0]).getTime();
+            var endDate = new Date(dates[1]).getTime();
+            var currentDate = new Date().getTime();
+            if (currentDate > startDate) {
+                daterange.style.border = "1px solid red";
+               $("#date-error").show();
+                return;
+            }
+            else {
+                daterange.style.border = "1px solid #E5E5E5";
+                $("#date-error").hide();
+            }
+            if (startDate === endDate) {
+                var finalEndDate = new Date(endDate + 24 * 60 * 60 * 1000);
+                daterange.value = dates[0] + ' - ' + (finalEndDate.getMonth() + 1) + '/' + finalEndDate.getDate() + '/' + finalEndDate.getFullYear();
+                window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + $("#NumberOfEmployee").val() + '&date=' + daterange.value;
+                }
 
             window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + employee.value + '&date=' + daterange.value;
 
