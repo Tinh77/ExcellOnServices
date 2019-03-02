@@ -2204,6 +2204,8 @@
     <Content Include="Content\HomeAssets\img\blog\6.jpg" />
     <Content Include="Content\HomeAssets\img\blog\b02.jpg" />
     <Content Include="Content\HomeAssets\img\favicon.png" />
+    <Content Include="Content\HomeAssets\img\icon\confirm.png" />
+    <Content Include="Content\HomeAssets\img\icon\delete.png" />
     <Content Include="Content\HomeAssets\img\icon\help.png" />
     <Content Include="Content\HomeAssets\img\icon\logo.png" />
     <Content Include="Content\HomeAssets\img\icon\support.png" />
