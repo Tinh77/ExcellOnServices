@@ -1,8 +1,12 @@
-﻿@model List<AspNetDemo.Models.Employee>
+﻿@model List<AspNetDemo.Models.Company>
 
 @{
-    ViewBag.Title = "ListEmployeeActive";
+    ViewBag.Title = "ListCompany";
 }
+
+
+
+
 
     <!-- ============================================================== -->
     <!-- main wrapper -->
@@ -199,13 +203,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Danh sách khách hàng </h2>
+                                <h2 class="pageheader-title">Danh sách nhân viên </h2>
                                 <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="@Url.Action("ListEmployee","Dashboard", new {Area = "Admin"})" class="breadcrumb-link">Nhân viên</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Nhân viên đã cho thuê</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Nhân viên</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -228,18 +231,14 @@
                                         <table class="table">
                                             <thead class="bg-light">
                                                 <tr class="border-0">
-                                                    <th class="border-0">Avatar</th>
                                                     <th class="border-0">Id</th>
-                                                    <th class="border-0">Username</th>
+                                                    <th class="border-0">Name</th>
+                                                    <th class="border-0">Logo</th>
                                                     <th class="border-0">Email</th>
                                                     <th class="border-0">Password</th>
-                                                    <th class="border-0">Firstname</th>
-                                                    <th class="border-0">Lastname</th>
                                                     <th class="border-0">Address</th>
-                                                    <th class="border-0">Gender</th>
-                                                    <th class="border-0">Department</th>
-                                                    <th class="border-0">Services</th>
-                                                    <th class="border-0">PhoneNumber</th>
+                                                    <th class="border-0">Description</th>
+                                                    <th class="border-0">Phone</th>
                                                     <th class="border-0">Status</th>
                                                 </tr>
                                             </thead>
@@ -247,18 +246,14 @@
                                                 @foreach (var item in Model)
                                                 {
                                                     <tr>
-                                                        <td><img src="@item.Avatar" width="45"/></td>
                                                         <td>@item.Id</td>
-                                                        <td>@item.Username</td>
+                                                        <td>@item.Name</td>
+                                                        <td><img src="@item.Logo" width="45" /></td>
                                                         <td>@item.Email</td>
                                                         <td>@item.Password</td>
-                                                        <td>@item.FirstName</td>
-                                                        <td>@item.LastName</td>
                                                         <td>@item.Address</td>
-                                                        <td>@item.Gender</td>
-                                                        <td>@item.Department</td>
-                                                        <td>@item.Services</td>
-                                                        <td>@item.PhoneNumber</td>
+                                                        <td>@item.Description</td>
+                                                        <td>@item.Phone</td>
                                                         <td>@item.Status</td>
                                                     </tr>
                                                 }
@@ -306,6 +301,3 @@
             </div>
         </div>
     </div>
-   
-
-
