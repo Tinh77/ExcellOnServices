@@ -2500,7 +2500,6 @@
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernote4c4d.ttf" />
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernote4c4d.woff" />
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernoted41d.eot" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeActive.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeDeactive.cshtml" />
@@ -2530,6 +2529,7 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Areas\Admin\Views\Dashboard\ListCompany.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

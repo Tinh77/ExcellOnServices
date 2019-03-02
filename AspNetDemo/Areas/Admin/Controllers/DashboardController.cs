@@ -11,7 +11,7 @@ namespace AspNetDemo.Areas.Admin.Controllers
     {
         ExcellOnServicesContext db = new ExcellOnServicesContext();
         // GET: Admin/Dashboard
-        public ActionResult ListCustomer()
+        public ActionResult ListCompany()
         {
             return View(db.Companies.ToList());
         }
