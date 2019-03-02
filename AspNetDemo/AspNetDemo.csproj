@@ -2202,6 +2202,7 @@
     <Content Include="Content\HomeAssets\img\about\2.jpg" />
     <Content Include="Content\HomeAssets\img\apple-touch-icon.png" />
     <Content Include="Content\HomeAssets\img\background\bg1.jpg" />
+    <Content Include="Content\HomeAssets\img\background\gihang.png" />
     <Content Include="Content\HomeAssets\img\background\slider1.jpg" />
     <Content Include="Content\HomeAssets\img\blog\1.jpg" />
     <Content Include="Content\HomeAssets\img\blog\2.jpg" />

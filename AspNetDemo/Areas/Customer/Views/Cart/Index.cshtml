@@ -3,264 +3,117 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section StyleSheets
-{
-
-}
-
-@section LeftSideBar
-{
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="left side-menu">
-        <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
-            <i class="ion-close"></i>
-        </button>
-
-        <!-- LOGO -->
-        <div class="topbar-left">
-            <div class="text-center">
-                <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
-                <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
+<div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                            <h1 class="title2">Excell On </h1>
+                        </div>
+                        <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                            <h2 class="title3">Nâng tầm giá trị</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="sidebar-inner slimscrollleft">
-
-            <div id="sidebar-menu">
-                <ul>
-
-                    <li>
-                        <a href="@Url.Action("Index","Dashboard", new {Area = "Customer"})" class="waves-effect"><i class="mdi mdi-airplay"></i><span> Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a href="exchange.html" class="waves-effect"><i class="mdi mdi-swap-horizontal"></i><span> Service </span></a>
-                    </li>
-                    <li>
-                        <a href="mywallet.html" class="waves-effect"><i class="mdi mdi-wallet"></i><span> Bill </span></a>
-                    </li>
-                    <li>
-                        <a href="calendar.html" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> Campaign History </span></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        </div> <!-- end sidebarinner -->
-    </div>
-    <!-- Left Sidebar End -->
-}
-
-@section TopBar
-{
-    <!-- Top Bar Start -->
-    <div class="topbar">
-
-        <nav class="navbar-custom">
-
-            <ul class="list-inline float-right mb-0">
-                <!-- language-->
-                <li class="list-inline-item dropdown notification-list hide-phone">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect text-white" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        English <img src="../../../../Content/DashboardAssets/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt="" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right language-switch">
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
-                    </div>
-                </li>
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="ti-email noti-icon"></i>
-                        <span class="badge badge-danger noti-icon-badge">5</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
-                        </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="ti-bell noti-icon"></i>
-                        <span class="badge badge-success noti-icon-badge">23</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
-                        </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                            <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-message"></i></div>
-                            <p class="notify-details"><b>New Message received</b><small class="text-muted">You have 87 unread messages</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-warning"><i class="mdi mdi-martini"></i></div>
-                            <p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        @{
-                            Company comp = new Company(); ;
-                            comp = (Company)Session["CompanyLogin"];
-                        }
-                        <img src="@comp.Logo" alt="user" class="rounded-circle">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5>Welcome</h5>
-                        </div>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                        <a class="dropdown-item" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="@Url.Action("Logout","Login", new {Area = "Customer"})"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
-                    </div>
-                </li>
-
-            </ul>
-
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <button class="button-menu-mobile open-left waves-light waves-effect">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                </li>
-                <li class="hide-phone app-search">
-                    <form role="search" class="">
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <a href=""><i class="fa fa-search"></i></a>
-                    </form>
-                </li>
-            </ul>
-
-            <div class="clearfix"></div>
-
-        </nav>
-
-    </div>
-    <!-- Top Bar End -->
-}
-
-<table class="table table-dark table-hover">
-
-    @{
-        decimal total = 0;
-    }
-    <tr>
-        <th>Option</th>
-        <th>Id</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Sub Total</th>
-    </tr>
-    @foreach (var item in (List<OrderDetail>)Session["cart"])
-    {
-        <tr>
-            <td>@Html.ActionLink("Delete", "Delete", "Cart", new { Area = "Customer", id = item.Service.Id }, null)</td>
-            <td>@item.Service.Id</td>
-            <td><img src="" style="width: 200px; height: 150px" /></td>
-            <td>@item.Service.Name</td>
-            <td>@item.NumberOfEmployee</td>
-            <td>@item.Service.Price</td>
-            @{ 
-                string[] v = (item.ToDate - item.FromDate).ToString().Split('.');
-                int c = Int32.Parse(v[0]);
-            }
-                <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c)</td>
-            @{
-                var listP = new List<int>();
-                listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c);
-                total += listP.Sum(x => x);
-            }
-        </tr>
-    }
-</table>
-<br />
-<br />
-<div class="container clearfix">
-    <div style="float: left">
-        <h1 class="total">Total: <span>@total</span>($)</h1>
-        <br>
-        <fieldset>
-            <center>@Html.ActionLink("Continue Shopping", "ProductDetail", "Home", new { Area = "" }, null)</center>
-        </fieldset>
-    </div>
-    <div style="width: 300px; float: right">
-        <h1>Bill Details</h1>
-        <form method="post">
-            <br>
-            <fieldset>
-                <input style="width: 300px" id="uniqueDescription" placeholder="Your Message" name="shipName" type="text" tabindex="1" required="required" autofocus>
-            </fieldset>
-            <br>
-            <fieldset>
-                <center>
-                    <input class="btn-default btn" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()" value="Checkout" />
-                </center>
-            </fieldset>
-        </form>
     </div>
 </div>
-
-@section Scripts
+@if (Session["cart"] == null)
 {
+    <div class="container blog-page area-padding">
+        <div class="content">
+            <div class="gio-hang">
+                <p class="text-center">
+                    <img class="img-fluid" src="~/Content/HomeAssets/img/background/gihang.png">
+                </p>
+                <p class="text-center">Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                <p class="text-center">
+                    <a class="btn btn-lg btn-danger text-light text-uppercase" href="@Url.Action("Index", "Home", new { Area = "" }, null)"> Quay lại trang chủ</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
+}
+else
+{
+    <div class="container blog-page area-padding">
+        <div class="service-area">
+            <table class="table table-service">
+                @{
+                    decimal total = 0;
+                }
+                <tr>
+                    <th>Option</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Sub Total</th>
+                </tr>
+                @foreach (var item in (List<OrderDetail>) Session["cart"])
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Delete","Cart", new {Area = "Customer", id = item.Service.Id}, null)" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
+                        </td>
+                        <td>@item.Service.Id</td>
+                        <td>@item.Service.Name</td>
+                        <td>@item.NumberOfEmployee</td>
+                        <td>@item.Service.Price</td>
+                        @{
+                            string[] v = (item.ToDate - item.FromDate).ToString().Split('.');
+                            int c = Int32.Parse(v[0]);
+                        }
+                        <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c)</td>
+                        @{
+                            var listP = new List<int>();
+                            listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c);
+                            total += listP.Sum(x => x);
+                        }
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div>
+                    <a class="btn btn-primary mt-4" href="@Url.Action("Index", "Home", new {Area = ""}, null)">Sử dụng thêm dịch vụ</a>
+                    <button class="btn btn-secondary mt-4">Liên hệ với chúng tôi</button>
+                </div>
+                <h5 class="mt-5">Ghi chú</h5>
+                <textarea autofocus id="uniqueDescription" cols="50" rows="5"></textarea>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="payment-area">
+                    <div class="title-cart">
+                        <h2>Thanh Toán </h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-6">
+                            <h4>Tổng Tiền</h4>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-6">
+                            <h4>@total $</h4>
+                        </div>
+                    </div>
+                    <div class="payment-area">
+                        <input class="btn btn-primary btn-lg btn-payment" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()" value="Thanh Toán"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Blog Area -->
+    <div class="clearfix"></div>
 }
 
