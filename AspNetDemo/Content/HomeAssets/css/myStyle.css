@@ -67,3 +67,29 @@
 .error{
     display: none
 }
+.customer-register{
+    width: 50%
+}
+.register-page{
+    display: flex;
+    justify-content: space-around
+}
+.register-page .form-group{
+    margin-top: 10px       
+}
+.title-register{
+    text-align: center
+}
+.submit{
+    text-align: center;
+}
+.btn-submit{
+    width: 130px;
+    margin-top: 20px
+}
+@media only screen and (max-width: 992px) {
+    .customer-register{
+        width: 100%
+    }
+    
+} 
