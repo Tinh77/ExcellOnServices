@@ -45,6 +45,7 @@
 else
 {
     <div class="container blog-page area-padding">
+        <h3>    </h3>
         <div class="service-area">
             <table class="table table-service">
                 @{
@@ -62,7 +63,7 @@ else
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Delete","Cart", new {Area = "Customer", id = item.Service.Id}, null)" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a href="@Url.Action("Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
                             @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
                         </td>
                         <td>@item.Service.Id</td>
@@ -95,7 +96,7 @@ else
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="payment-area">
                     <div class="title-cart">
-                        <h2>Thanh Toán </h2>
+                        <h3>Thanh Toán </h3>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-6">
@@ -106,7 +107,7 @@ else
                         </div>
                     </div>
                     <div class="payment-area">
-                        <input class="btn btn-primary btn-lg btn-payment" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()" value="Thanh Toán"/>
+                        <button class="btn btn-primary btn-payment" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()">Tiến hành thanh toán</button>
                     </div>
                 </div>
             </div>
