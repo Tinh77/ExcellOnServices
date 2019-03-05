@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -11,6 +13,9 @@ namespace AspNetDemo.Areas.Customer.Controllers
 {
     public class CartController : Controller
     {
+        private const string EMAIL = "excellonservice123@gmail.com";
+        private const string PASSAPP = "kimlmjniyhctbguo";
+        private const string SUBJECT = "Bạn đã đặt hàng thành công!";
 
         ExcellOnServicesContext db = new ExcellOnServicesContext();
         Company comp = LoginController.CurCompany;
@@ -100,11 +105,46 @@ namespace AspNetDemo.Areas.Customer.Controllers
                     db.OrderDetails.Add(orderDetail);
                     db.SaveChanges();
                 }
-
                 Session.Remove("cart");
             }
+
+            Company company = (Company) Session["CompanyLogin"];
+            SendEmailToCompany(company.Email);
             return View("Success");
         }
 
+        [System.Web.Mvc.NonAction]
+        public void SendEmailToCompany(string email)
+        {
+            var fromEmail = new MailAddress(EMAIL, "Activation Username");
+            var toEmail = new MailAddress(email);
+            string subject = SUBJECT;
+            var fromEmailPassword = PASSAPP;
+            var ord = db.OrderServices.Where(x => x.Company_Id == comp.Id).ToList().OrderByDescending(i => i.Id)
+                .FirstOrDefault();
+
+            string body = "Cảm ơn bạn đã thuê dịch vụ của chúng tôi" +
+                          "Mã đặt hàng của bạn là " + ord.Id;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+
+            })
+
+            smtp.Send(message);
+        }
     }
 }
