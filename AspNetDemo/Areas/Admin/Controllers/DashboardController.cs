@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using ActionNameAttribute = System.Web.Http.ActionNameAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace AspNetDemo.Areas.Admin.Controllers
 {
@@ -51,5 +54,32 @@ namespace AspNetDemo.Areas.Admin.Controllers
         {
             return View(db.OrderServices.ToList());
         }
+
+        public ActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderService order = db.OrderServices.Find(id);
+            if(order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            OrderService order = db.OrderServices.Find(id);
+            db.OrderServices.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
