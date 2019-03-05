@@ -25,19 +25,15 @@
 
 
 <body>
-
-
     <!-- Begin page -->
     <div class="accountbg"></div>
     <div class="wrapper-page">
 
         <div class="card">
             <div class="card-body">
-
-                <h3 class="text-center mt-0 m-b-15">
-                    <a href="index.html" class="logo logo-admin"><img src="../../../../Content/DashboardAssets/assets/images/logo.png" height="24" alt="logo"></a>
+                <h3 class=" text-center">
+                    EoS
                 </h3>
-
                 <div class="p-3">
                     <form class="form-horizontal m-t-20" action="index.html">
 
@@ -67,15 +63,8 @@
                                 <input style="text-align: center; background: #63C76A; color: white" class="btn-default btn" onclick="location.href = '@Url.Action("Login", "Login", new {area = "Customer"})?email=' + $('#uniqueEmail').val() + '&password=' + $('#uniquePassword').val()" value="Submit" />
                             </center>
                         </fieldset>
-
-
-                        <div class="form-group m-t-10 mb-0 row">
-                            <div class="col-sm-7 m-t-20">
-                                <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> <small>Forgot your password ?</small></a>
-                            </div>
-                            <div class="col-sm-5 m-t-20">
-                                <a href="@Url.Action("Index","Register", new {area = "Customer"})" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></a>
-                            </div>
+                        <div class="text-center mt-2">
+                            <p>Bạn chưa có tài khoản ?<a href="@Url.Action("Index","Register", new {area = "Customer"})" class="text-muted">đăng ký ngay </a></p>
                         </div>
                     </form>
                 </div>
