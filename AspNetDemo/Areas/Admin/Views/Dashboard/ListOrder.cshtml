@@ -4,13 +4,9 @@
     ViewBag.Title = "ListOrder";
 }
 
-    <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
+    <!-- main wrapper -->  
     <div class="dashboard-main-wrapper">
-        <!-- ============================================================== -->
         <!-- navbar -->
-        <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand page-scroll sticky-logo" href="@Url.Action("ListCompany","Dashboard", new {Area = "Admin"})"><h1><span>E</span>oS</h1></a>
@@ -224,6 +220,9 @@
                                 <h5 class="card-header">Order</h5>
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
+                                        <p>
+                                            @Html.ActionLink("Create New", "Create")
+                                        </p>
                                         <table class="table">
                                             <thead class="bg-light">
                                                 <tr class="border-0">
@@ -236,7 +235,7 @@
                                                     <th class="border-0">STATUS</th>
                                                     <th class="border-0">COMPANY ID</th>
                                                     <th class="border-0"></th>
-                                       
+
 
 
                                                 </tr>
@@ -244,18 +243,23 @@
                                             <tbody>
                                                 @foreach (var item in Model)
                                                 {
-                                                <tr>
-                                                    <td>@item.Id</td>
-                                                    <td>@item.Description</td>
-                                                    <td>@item.TotalPrice</td>
-                                                    <td>@item.CreatedAt</td>
-                                                    <td>@item.PaymentDate</td>
-                                                    <td>@item.BillDate</td>
-                                                    <td>@item.Status</td>
-                                                    <td>@item.Company_Id</td>
-                                                    <td><a class="btn"><i class="fa fa-check" aria-hidden="true" style="color:green"></i></a></td>
-                                                    <td><a asp-action ="Delete" class="btn"><i class="fa fa-times" aria-hidden="true" /></a></td>
-                                                </tr>                                                    
+                                                    <tr>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.Description</td>
+                                                        <td>@item.TotalPrice</td>
+                                                        <td>@item.CreatedAt</td>
+                                                        <td>@item.PaymentDate</td>
+                                                        <td>@item.BillDate</td>
+                                                        <td>@item.Status</td>
+                                                        <td>@item.Company_Id</td>
+                                                        <td><a class="btn"><i class="fa fa-check" aria-hidden="true" style="color:green"></i></a></td>
+                                                        <td><i class="fa fa-times" aria-hidden="true" /></td>
+                                                        <td>
+                                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                                        </td>
+                                                    </tr>
                                                 }
                                             </tbody>
                                         </table>
