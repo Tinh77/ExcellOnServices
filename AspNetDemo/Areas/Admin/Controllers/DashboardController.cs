@@ -55,31 +55,5 @@ namespace AspNetDemo.Areas.Admin.Controllers
             return View(db.OrderServices.ToList());
         }
 
-        public ActionResult Delete(int? id)
-        {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            OrderService order = db.OrderServices.Find(id);
-            if(order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
-        
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            OrderService order = db.OrderServices.Find(id);
-            db.OrderServices.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-
-        }
-
     }
 }
