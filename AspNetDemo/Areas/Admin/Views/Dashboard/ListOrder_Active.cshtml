@@ -183,30 +183,31 @@
                 </div>
             </nav>
         </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- end left sidebar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- wrapper  -->
-    <!-- ============================================================== -->
-    <div class="dashboard-wrapper">
-        <div class="dashboard-ecommerce">
-            <div class="container-fluid dashboard-content ">
-                <!-- ============================================================== -->
-                <!-- pageheader  -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                            <h2 class="pageheader-title">Danh sách đơn hàng</h2>
-                            <p class="pageheader-text"></p>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Đơn hàng</a></li>
-                                    </ol>
-                                </nav>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Đơn hàng xác nhận</h2>
+                                <p class="pageheader-text"></p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Đơn hàng</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Đơn hàng đã xác nhận</li>
+                                        </ol>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -215,32 +216,29 @@
                 <!-- end pageheader  -->
                 <!-- ============================================================== -->
                 <div class="ecommerce-widget">
-
-
-                    <!-- recent orders  -->
-                    <!-- ============================================================== -->
-                    <div class="col-12">
-                        <div class="card">
-                            <h5 class="card-header">Order</h5>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
-                                                <th class="border-0">ID</th>
-                                                <th class="border-0">DESCRIPTION</th>
-                                                <th class="border-0">TOTAL PRICE</th>
-                                                <th class="border-0">CREATE AT</th>
-                                                <th class="border-0">PAYMENT DATE</th>
-                                                <th class="border-0">BILL DATE</th>
-                                                <th class="border-0">STATUS</th>
-                                                <th class="border-0">COMPANY ID</th>
-                                                <th class="border-0"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model)
-                                            {
+                        <!-- recent orders  -->
+                        <!-- ============================================================== -->
+                        <div class="col-12">
+                            <div class="card">
+                                <h5 class="card-header">Current services</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">ID</th>
+                                                    <th class="border-0">DESCRIPTION</th>
+                                                    <th class="border-0">TOTAL PRICE</th>
+                                                    <th class="border-0">CREATE AT</th>
+                                                    <th class="border-0">PAYMENT DATE</th>
+                                                    <th class="border-0">BILL DATE</th>
+                                                    <th class="border-0">STATUS</th>
+                                                    <th class="border-0">COMPANY ID</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
                                                 <tr>
                                                     <td>@item.Id</td>
                                                     <td>@item.Description</td>
@@ -249,12 +247,12 @@
                                                     <td>@item.PaymentDate</td>
                                                     <td>@item.BillDate</td>
                                                     <td>@item.Status</td>
-                                                    <td>@item.Company_Id</td>                                                  
-                                                    <td><span class="badge-dot badge-success mr-1"></span> Delivered</td>
+                                                    <td>@item.Company_Id</td>
                                                 </tr>
-                                            }
-                                        </tbody>
-                                    </table>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
