@@ -1,0 +1,24 @@
+﻿@using AspNetDemo.Models
+
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="alert alert-success">
+    <strong>Success!</strong> Your Order has been received. Click <a href="@Url.Action("Index","Home", new {area = ""})">here</a> to return Home
+</div>
+
+
+@section Scripts
+{
+    <script>
+        // auto reload 3s
+        var timer = setTimeout(function() {
+            window.location = '@Url.Action("Index","Home", new {area = ""})';
+        }, 3000);
+    </script>
+
+}
+

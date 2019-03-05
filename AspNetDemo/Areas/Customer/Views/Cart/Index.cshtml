@@ -1,0 +1,120 @@
+﻿@using AspNetDemo.Models
+@model List<Service>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                            <h1 class="title2">Excell On </h1>
+                        </div>
+                        <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                            <h2 class="title3">Nâng tầm giá trị</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Session["cart"] == null)
+{
+    <div class="container blog-page area-padding">
+        <div class="content">
+            <div class="gio-hang">
+                <p class="text-center">
+                    <img class="img-fluid" src="~/Content/HomeAssets/img/background/gihang.png">
+                </p>
+                <p class="text-center">Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                <p class="text-center">
+                    <a class="btn btn-lg btn-danger text-light text-uppercase" href="@Url.Action("Index", "Home", new { Area = "" }, null)"> Quay lại trang chủ</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="container blog-page area-padding">
+        <h3>    </h3>
+        <div class="service-area">
+            <table class="table table-service">
+                @{
+                    decimal total = 0;
+                }
+                <tr>
+                    <th>Tùy Chọn</th>
+                    <th>Tài Khoản</th>
+                    <th>Tên Dịch Vụ</th>
+                    <th>Số Lượng Nhân Viên</th>
+                    <th>Đơn Giá</th>
+                    <th>Tổng Số Phụ</th>
+                </tr>
+                @foreach (var item in (List<OrderDetail>) Session["cart"])
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
+                        </td>
+                        <td>@item.Service.Id</td>
+                        <td>@item.Service.Name</td>
+                        <td>@item.NumberOfEmployee</td>
+                        <td>@item.Service.Price</td>
+                        @{
+                            string[] v = (item.ToDate - item.FromDate).ToString().Split('.');
+                            int c = Int32.Parse(v[0]);
+                        }
+                        <td>@(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c)</td>
+                        @{
+                            var listP = new List<int>();
+                            listP.Add(Int32.Parse(item.Service.Price) * item.NumberOfEmployee * c);
+                            total += listP.Sum(x => x);
+                        }
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div>
+                    <a class="btn btn-primary mt-4" href="@Url.Action("Index", "Home", new {Area = ""}, null)">Sử dụng thêm dịch vụ</a>
+                    <button class="btn btn-secondary mt-4">Liên hệ với chúng tôi</button>
+                </div>
+                <h5 class="mt-5">Ghi chú</h5>
+                <textarea autofocus id="uniqueDescription" cols="50" rows="5"></textarea>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="payment-area">
+                    <div class="title-cart">
+                        <h3>Thanh Toán </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-6">
+                            <h4>Tổng Tiền</h4>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-6">
+                            <h4>@total $</h4>
+                        </div>
+                    </div>
+                    <div class="payment-area">
+                        <button class="btn btn-primary btn-payment" onclick="location.href = '@Url.Action("Checkout", "Cart", new {area = "Customer"})?totalPr=' + @total + '&description=' + $('#uniqueDescription').val()">Tiến hành thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Blog Area -->
+    <div class="clearfix"></div>
+}
+

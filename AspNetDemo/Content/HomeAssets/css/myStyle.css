@@ -1,0 +1,117 @@
+.service-icon {
+    width: 36px;
+}
+
+.text-overflow {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.table > tbody > tr > td {
+    padding: 20px
+}
+
+.table > tbody > tr > th {
+    padding: 8px 20px;
+}
+
+.title-cart {
+    border-bottom: 1px solid #cccccc;
+    text-align: end;
+    margin-bottom: 25px
+}
+
+.price-area {
+    display: flex;
+}
+
+.price-item {
+    justify-content: space-around
+}
+
+.btn-payment {
+    margin-top: 20px;
+    float: right;
+}
+
+    .btn-payment::after {
+        content: ".";
+        height: 0;
+        visibility: hidden;
+        display: block;
+        clear: both;
+    }
+
+.payment-area {
+    margin-top: 20pxs
+}
+
+.service-area {
+    width: 100%;
+    overflow: auto;
+}
+
+.payment-area::after {
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+
+.mt-5 {
+    margin-top: 20px
+}
+
+.mt-4 {
+    margin-top: 10px
+}
+
+.error {
+    display: none
+}
+
+/*register page*/
+.bg-muted {
+    background: #EFEFEF
+}
+
+.customer-register {
+    width: 50%
+}
+
+.register-page {
+    display: flex;
+    justify-content: space-around
+}
+
+    .register-page .form-group {
+        margin-top: 10px
+    }
+
+.title-register {
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-bottom: 10px
+}
+.bg-mute {
+    background: #EFEFEF;
+    height: 100%
+}
+.submit {
+    text-align: center;
+}
+
+.btn-submit {
+    width: 130px;
+    margin-top: 20px
+}
+
+
+@media only screen and (max-width: 992px) {
+    .customer-register {
+        width: 100%
+    }
+}
