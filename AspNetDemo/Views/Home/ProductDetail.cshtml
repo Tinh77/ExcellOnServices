@@ -3,82 +3,60 @@
 ﻿@using AspNetDemo.Models
 @model AspNetDemo.Models.Service
 
-    <div id="preloader"></div>
-    <!-- header end -->
-    <!-- Start Bottom Header -->
-    <div class="header-bg page-area">
-        <div class="home-overly"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="slider-content text-center">
-                        <div class="header-bottom">
-                            <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
-                                <h1 class="title2">Blog Details </h1>
-                            </div>
-                            <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
-                                <h2 class="title3">profesional Blog Page</h2>
-                            </div>
+<div id="preloader"></div>
+<!-- header end -->
+<!-- Start Bottom Header -->
+<div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                            <h1 class="title2">Blog Details </h1>
+                        </div>
+                        <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                            <h2 class="title3">profesional Blog Page</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END Header -->
-    <div class="blog-page area-padding">
-        <div class="container">
-            <div class="row">
-                <!-- Start single blog -->
-                <div class="col-md-8 col-sm-8 col-xs-12">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <!-- single-blog start -->
-                            <article class="blog-post-wrapper">
-                                <div class="post-thumbnail">
-                                    <img src="../../Content/HomeAssets/img/blog/6.jpg" alt="" />
-                                </div>
-                                <div class="post-information">
-                                    <h2>@Html.DisplayFor(model => model.Name)</h2>
-                                    <p>@Html.DisplayFor(model => model.Descrition)</p>
-                                    <ul>
-                                        <li>>Hello world</li>
-                                        <li>Payment quick</li>
-                                        <li>Convenient</li>
-                                    </ul>
-                                </div>
-                            </article>
-                            <div class="clear"></div>
-                            <div class="single-post-comments">
-                                <div class="comment-respond">
-                                    <h3 class="comment-reply-title">Leave a Reply </h3>
-                                    <span class="email-notes">
-                                        Your email address will not be published. Required fields are marked
-                                        *
-                                    </span>
-                                    <form action="#" name="serviceForm">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <p>Số lượng nhân viên</p>
-                                                <input id="numberEmployee" name="NumberOfEmployee" value="5" type="number" />
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <p>Thời gian thuê</p>
-                                                <input type="text" name="daterange" id="daterange" />
-                                                <div id="date-error" class="text-danger alert alert-danger error">Bạn hãy chọn đúng ngày thuê hiện tại</div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <p>Tổng số tiền</p>
-                                                @{
-                                                    int total = 0;
-                                                    total = (Int32.Parse(@Model.Price) * 5 * 5);
-                                                }
-                                                <p>@total</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
-                                            <p>Yêu cầu thêm</p>
-                                            <textarea id="message-box" cols="30" rows="10"></textarea>
+</div>
+<!-- END Header -->
+<div class="blog-page area-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Start single blog -->
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- single-blog start -->
+                        <article class="blog-post-wrapper">
+                            <div class="post-thumbnail">
+                                <img src="../../Content/HomeAssets/img/blog/6.jpg" alt="" />
+                            </div>
+                            <div class="post-information">
+                                <h2>@Html.DisplayFor(model => model.Name)</h2>
+                                <p>@Html.DisplayFor(model => model.Descrition)</p>
+                                <ul>
+                                    <li>>Hello world</li>
+                                    <li>Payment quick</li>
+                                    <li>Convenient</li>
+                                </ul>
+                            </div>
+                        </article>
+                        <div class="clear"></div>
+                        <div class="single-post-comments">
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Leave a Reply </h3>
+                                <form action="#" name="serviceForm">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <p>Số lượng nhân viên</p>
+                                            <input style="width: 100%; margin-bottom: 10px" id="numberEmployee" name="NumberOfEmployee" value="5" type="number" />
                                             @{
                                                 Company comp = new Company();
                                                 comp = (Company)Session["CompanyLogin"];
@@ -93,74 +71,80 @@
                                                 }
                                             }
                                         </div>
-                                    </form>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <p>Thời gian thuê</p>
+                                            <input type="text" name="daterange" id="daterange" />
+                                            <div id="date-error" class="text-danger alert alert-danger error">Bạn hãy chọn đúng ngày thuê hiện tại</div>
 
-                                </div>
-
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+
                         </div>
-                        <!-- single-blog end -->
                     </div>
+                    <!-- single-blog end -->
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="page-head-blog">
-                        <div class="single-blog-page">
-                            <!-- recent start -->
-                            <div class="left-blog">
-                                <h4>recent service</h4>
-                                <div class="recent-post">
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="../../Content/HomeAssets/img/blog/2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> In Bound </a></p>
-                                        </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="page-head-blog">
+                    <div class="single-blog-page">
+                        <!-- recent start -->
+                        <div class="left-blog">
+                            <h4>recent service</h4>
+                            <div class="recent-post">
+                                <div class="recent-single-post">
+                                    <div class="post-img">
+                                        <a href="#">
+                                            <img src="../../Content/HomeAssets/img/blog/2.jpg" alt="">
+                                        </a>
                                     </div>
-                                    <!-- End single post -->
-                                    <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="../../Content/HomeAssets/img/blog/3.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#"> Out bound</a></p>
-                                        </div>
+                                    <div class="pst-content">
+                                        <p><a href="#"> In Bound </a></p>
                                     </div>
-                                    <!-- End single post -->
-                                    <!-- start single post -->
-                                    <div class="recent-single-post">
-                                        <div class="post-img">
-                                            <a href="#">
-                                                <img src="../../Content/HomeAssets/img/blog/4.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="pst-content">
-                                            <p><a href="#">Tele Marketing</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End single post -->
                                 </div>
+                                <!-- End single post -->
+                                <!-- start single post -->
+                                <div class="recent-single-post">
+                                    <div class="post-img">
+                                        <a href="#">
+                                            <img src="../../Content/HomeAssets/img/blog/3.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="pst-content">
+                                        <p><a href="#"> Out bound</a></p>
+                                    </div>
+                                </div>
+                                <!-- End single post -->
+                                <!-- start single post -->
+                                <div class="recent-single-post">
+                                    <div class="post-img">
+                                        <a href="#">
+                                            <img src="../../Content/HomeAssets/img/blog/4.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="pst-content">
+                                        <p><a href="#">Tele Marketing</a></p>
+                                    </div>
+                                </div>
+                                <!-- End single post -->
                             </div>
-                            <!-- recent end -->
                         </div>
+                        <!-- recent end -->
                     </div>
                 </div>
             </div>
-            <!-- End left sidebar -->
         </div>
+        <!-- End left sidebar -->
     </div>
-    <!-- End Blog Area -->
-    <div class="clearfix"></div>
-    <!-- Start Footer bottom Area -->
-    
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-   
-    <script>
+</div>
+<!-- End Blog Area -->
+<div class="clearfix"></div>
+<!-- Start Footer bottom Area -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script>
        var btn_payment = document.getElementById("payment");
         btn_payment.onclick = function() {
             var employee = document.getElementById("numberEmployee");
@@ -169,15 +153,15 @@
             var startDate = new Date(dates[0]).getTime();
             var endDate = new Date(dates[1]).getTime();
             var currentDate = new Date().getTime();
-            //if (currentDate > startDate) {
-            //    daterange.style.border = "1px solid red";
-            //   $("#date-error").show();
-            //    return;
-            //}
-            //else {
-            //    daterange.style.border = "1px solid #E5E5E5";
-            //    $("#date-error").hide();
-            //}
+            if (currentDate > startDate) {
+                daterange.style.border = "1px solid red";
+               $("#date-error").show();
+                return;
+            }
+            else {
+                daterange.style.border = "1px solid #E5E5E5";
+                $("#date-error").hide();
+            }
             if (startDate === endDate) {
                 var finalEndDate = new Date(endDate + 24 * 60 * 60 * 1000);
                 daterange.value = dates[0] + ' - ' + (finalEndDate.getMonth() + 1) + '/' + finalEndDate.getDate() + '/' + finalEndDate.getFullYear();
@@ -187,4 +171,4 @@
             window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + employee.value + '&date=' + daterange.value;
 
         }
-    </script>
+</script>
