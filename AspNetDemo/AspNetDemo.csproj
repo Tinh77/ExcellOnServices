@@ -63,6 +63,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -139,12 +145,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompaniesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderManagmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\RegisterAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\Customer\Controllers\CartController.cs" />
     <Compile Include="Areas\Customer\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Customer\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Customer\Controllers\OrderHistoryController.cs" />
     <Compile Include="Areas\Customer\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Controllers\DashboardController.cs" />
@@ -237,6 +248,7 @@
     <Content Include="Content\DashboardAdmin\assets\images\product-pic.jpg" />
     <Content Include="Content\DashboardAdmin\assets\images\slack.png" />
     <Content Include="Content\DashboardAdmin\assets\images\switch.png" />
+    <Content Include="Content\DashboardAdmin\assets\libs\css\mystyle.css" />
     <Content Include="Content\DashboardAdmin\assets\libs\css\style.css" />
     <Content Include="Content\DashboardAdmin\assets\libs\js\dashboard-ecommerce.js" />
     <Content Include="Content\DashboardAdmin\assets\libs\js\dashboard-finance.js" />
@@ -2273,6 +2285,7 @@
     <Content Include="Content\HomeAssets\lib\venobox\venobox.min.js" />
     <Content Include="Content\HomeAssets\lib\wow\wow.js" />
     <Content Include="Content\HomeAssets\lib\wow\wow.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2537,6 +2550,28 @@
     <Content Include="Areas\Admin\Views\Dashboard\ListCompany.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RegisterAdmin\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Customer\Views\OrderHistory\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\OrderHistory\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagment\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2584,8 +2619,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Customer\Models\" />
-    <Folder Include="Areas\Customer\Views\List\" />
-    <Folder Include="Areas\Customer\Views\Shared\" />
     <Folder Include="Areas\Employee\Models\" />
     <Folder Include="Areas\Employee\Views\Shared\" />
   </ItemGroup>
