@@ -15,45 +15,9 @@ namespace AspNetDemo.Areas.Admin.Controllers
     {
         ExcellOnServicesContext db = new ExcellOnServicesContext();
         // GET: Admin/Dashboard
-        public ActionResult ListCompany()
+        public ActionResult Index()
         {
             return View(db.Companies.ToList());
         }
-
-        public ActionResult ListEmployee()
-        {
-            return View(db.Employees.ToList());
-        }
-
-        public ActionResult ListEmployeeActive()
-        {
-            return View(db.Employees.ToList());
-        }
-
-        public ActionResult ListEmployeeDeactive()
-        {
-            return View(db.Employees.ToList());
-        }
-
-        public ActionResult ListServices()
-        {
-            return View(db.Services.ToList());
-        }
-
-        public ActionResult ListOrder()
-        {
-            return View(db.OrderServices.ToList());
-        }
-
-        public ActionResult ListOrder_Active()
-        {
-            return View(db.OrderServices.ToList());
-        }
-
-        public ActionResult ListOrder_Deactive()
-        {
-            return View(db.OrderServices.ToList());
-        }
-
     }
 }

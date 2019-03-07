@@ -1,23 +1,21 @@
-﻿@model List<AspNetDemo.Models.Company>
+﻿@model PagedList.IPagedList<OrderService>
+@using AspNetDemo.Models
+@using PagedList
+@using PagedList.Mvc
 
 @{
-    ViewBag.Title = "ListCompany";
+    ViewBag.Title = "Index";
 }
 
-
-
-
-
-<!-- ============================================================== -->
-<!-- main wrapper -->
-<!-- ============================================================== -->
-<div class="dashboard-main-wrapper">
-    <!-- ============================================================== -->
-    <!-- navbar -->
-    <!-- ============================================================== -->
+<h2>Index</h2>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section navbarAdmin {
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
-            <a class="navbar-brand page-scroll sticky-logo" href="@Url.Action("ListCompany","Dashboard", new {Area = "Admin"})"><h1><span>E</span>oS</h1></a>
+            <a class="navbar-brand page-scroll sticky-logo" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})"><h1><span>E</span>oS</h1></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -127,12 +125,9 @@
             </div>
         </nav>
     </div>
-    <!-- ============================================================== -->
-    <!-- end navbar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- left sidebar -->
-    <!-- ============================================================== -->
+}
+
+@section leftsidebar{
     <div class="nav-left-sidebar sidebar-dark">
         <div class="menu-list">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -150,36 +145,33 @@
                             <div id="submenu-2" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListEmployeeActive","Dashboard", new {Area = "Admin"})">Nhân viên hiện đang được cho thuê</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListEmployeeDeactive","Dashboard", new {Area = "Admin"})">Nhân viên chưa cho thuê</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Employees", new {Area = "Admin"})">Nhân viên</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("ListCompany","Dashboard", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Danh sách khách hàng</a>
+                            <a class="nav-link" href="@Url.Action("Index","Companies", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Danh sách khách hàng</a>
                             <div id="submenu-3" class="collapse submenu" style="">
                                 <ul class="nav flex-column"></ul>
                             </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="@Url.Action("ListServices","Dashboard", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">Danh sách dịch vụ</a>
+                            <a class="nav-link" href="@Url.Action("Index","Services", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">Danh sách dịch vụ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Danh sách đơn hàng</a>
                             <div id="submenu-5" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListOrder","Dashboard", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
+                                        <a class="nav-link" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListOrder_Active","Dashboard", new {Area = "Admin"})">Đơn hàng xác nhận</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListOrder_Deactive","Dashboard", new {Area = "Admin"})">Đơn hàng chưa xác nhận</a>
-                                    </li>
+                                    @*<li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("ListOrder_Active","Dashboard", new {Area = "Admin"})">Đơn hàng xác nhận</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("ListOrder_Deactive","Dashboard", new {Area = "Admin"})">Đơn hàng chưa xác nhận</a>
+                                        </li>*@
                                 </ul>
                             </div>
                         </li>
@@ -188,11 +180,125 @@
             </nav>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end left sidebar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- wrapper  -->
-    <!-- ============================================================== -->
+}
 
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Example</h4>
+                                        <p class="text-muted m-b-30 font-14">This is an experimental awesome solution for responsive tables with complex data.</p>
+                                        <div class="table-rep-plugin">
+                                            <div class="table-responsive b-0" data-pattern="priority-columns">
+                                                <table id="tech-companies-1" class="table  table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Email</th>
+                                                            <th>.Name</th>
+                                                            <th>CreatedAt</th>
+                                                            <th>PaymentDate</th>
+                                                            <th>TotalPrice</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr>
+                                                                <th>@Html.DisplayFor(modelItem => item.Id)</th>
+                                                                <td>@Html.DisplayFor(modelItem => item.Company.Email)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Company.Name)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.PaymentDate)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                                                                @{
+                                                                    string statusDisplay = "";
+                                                                    switch (item.Status)
+                                                                    {
+                                                                        case -1:
+                                                                            statusDisplay = "Canceled";
+                                                                            break;
+                                                                        case 0:
+                                                                            statusDisplay = "Processing";
+                                                                            break;
+                                                                        case 1:
+                                                                            statusDisplay = "Accepted";
+                                                                            break;
+                                                                        case 2:
+                                                                            statusDisplay = "On Shipping";
+                                                                            break;
+                                                                        case 3:
+                                                                            statusDisplay = "Done";
+                                                                            break;
+                                                                        case 4:
+                                                                            statusDisplay = "Pay With Paypal";
+                                                                            break;
+                                                                        case 5:
+                                                                            statusDisplay = "Pay With Amazon";
+                                                                            break;
+                                                                        default:
+                                                                            statusDisplay = "Unknown";
+                                                                            break;
+                                                                    }
+                                                                }
+                                                                <td>@statusDisplay</td>
+                                                                <td>
+                                                                    @*show chi tiết đơn hàng theo modal (làm sau)*@
+                                                                    <div class="table-data-feature">
+                                                                        @{
+                                                                            switch (item.Status)
+                                                                            {
+                                                                                case -1:
+                                                                                    @Html.ActionLink("Re Open", "ReOpen", new { id = item.Id })
+                                                                                    break;
+                                                                                case 0:
+                                                                                    @Html.ActionLink("Accpeted", "ChangeStatus", new { id = item.Id })
+                                                                                    break;
+                                                                                case 1:
+                                                                                    @Html.ActionLink("On Shipping", "ChangeStatus", new { id = item.Id })
+                                                                                    break;
+                                                                                case 2:
+                                                                                    @Html.ActionLink("Done", "ChangeStatus", new { id = item.Id })
+                                                                                    break;
+                                                                                default:
+
+                                                                                    break;
+                                                                            }
+                                                                        }
+                                                                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                                                        @Html.ActionLink("Cancel", "Cancel", new { id = item.Id })
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            <div>
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount)
+                            </div>
+                            <div class="card">
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- end row -->

@@ -1,23 +1,13 @@
-﻿@model List<AspNetDemo.Models.Company>
+﻿@model IEnumerable<AspNetDemo.Models.Company>
 
 @{
-    ViewBag.Title = "ListCompany";
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
-
-
-
-<!-- ============================================================== -->
-<!-- main wrapper -->
-<!-- ============================================================== -->
-<div class="dashboard-main-wrapper">
-    <!-- ============================================================== -->
-    <!-- navbar -->
-    <!-- ============================================================== -->
+@section navbarAdmin {
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
-            <a class="navbar-brand page-scroll sticky-logo" href="@Url.Action("ListCompany","Dashboard", new {Area = "Admin"})"><h1><span>E</span>oS</h1></a>
+            <a class="navbar-brand page-scroll sticky-logo" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})"><h1><span>E</span>oS</h1></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -127,12 +117,9 @@
             </div>
         </nav>
     </div>
-    <!-- ============================================================== -->
-    <!-- end navbar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- left sidebar -->
-    <!-- ============================================================== -->
+}
+
+@section leftsidebar{
     <div class="nav-left-sidebar sidebar-dark">
         <div class="menu-list">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -150,36 +137,33 @@
                             <div id="submenu-2" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListEmployeeActive","Dashboard", new {Area = "Admin"})">Nhân viên hiện đang được cho thuê</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListEmployeeDeactive","Dashboard", new {Area = "Admin"})">Nhân viên chưa cho thuê</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Employees", new {Area = "Admin"})">Nhân viên</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("ListCompany","Dashboard", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Danh sách khách hàng</a>
+                            <a class="nav-link" href="@Url.Action("Index","Companies", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Danh sách khách hàng</a>
                             <div id="submenu-3" class="collapse submenu" style="">
                                 <ul class="nav flex-column"></ul>
                             </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="@Url.Action("ListServices","Dashboard", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">Danh sách dịch vụ</a>
+                            <a class="nav-link" href="@Url.Action("Index","Services", new {Area = "Admin"})" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">Danh sách dịch vụ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Danh sách đơn hàng</a>
                             <div id="submenu-5" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@Url.Action("ListOrder","Dashboard", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
+                                        <a class="nav-link" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
                                     </li>
-                                    <li class="nav-item">
+                                    @*<li class="nav-item">
                                         <a class="nav-link" href="@Url.Action("ListOrder_Active","Dashboard", new {Area = "Admin"})">Đơn hàng xác nhận</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="@Url.Action("ListOrder_Deactive","Dashboard", new {Area = "Admin"})">Đơn hàng chưa xác nhận</a>
-                                    </li>
+                                    </li>*@
                                 </ul>
                             </div>
                         </li>
@@ -188,11 +172,109 @@
             </nav>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end left sidebar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- wrapper  -->
-    <!-- ============================================================== -->
+}
 
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Danh sách nhân viên </h2>
+                        <p class="pageheader-text"></p>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Nhân viên</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader  -->
+            <!-- ============================================================== -->
+            <div class="ecommerce-widget">
+
+
+                <!-- recent orders  -->
+                <!-- ============================================================== -->
+                <div class="col-12">
+                    <div class="card">
+                        <h5 class="card-header">Recent Orders</h5>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">Id</th>
+                                            <th class="border-0">Name</th>
+                                            <th class="border-0">Logo</th>
+                                            <th class="border-0">Email</th>
+                                            <th class="border-0">Address</th>
+                                            <th class="border-0">Description</th>
+                                            <th class="border-0">Phone</th>
+                                            <th class="border-0">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td><img src="@item.Logo" width="45" /></td>
+                                                <td>@item.Email</td>
+                                                <td>@item.Address</td>
+                                                <td>@item.Description</td>
+                                                <td>@item.Phone</td>
+                                                <td>@item.Status</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end recent orders  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+            </div>
+            <div class="row">
+
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- end wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
 </div>

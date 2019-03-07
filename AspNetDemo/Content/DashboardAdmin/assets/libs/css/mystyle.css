@@ -1,0 +1,18 @@
+﻿.pagination-container {
+    margin-right: auto;
+    margin-left: auto
+}
+.pagination {
+    margin-bottom: 0
+}
+.pagination li {
+    margin-right: 20px;
+    font-size: 18px
+}
+.active {
+    color: #ff407b
+}
+.admin-title {
+    padding: 12px 20px;
+    margin-bottom: 0
+}
