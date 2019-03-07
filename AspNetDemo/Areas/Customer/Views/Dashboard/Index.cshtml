@@ -3,217 +3,113 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@section StyleSheets
-{
-
-}
-
-@section LeftSideBar
-{
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="left side-menu">
-        <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
-            <i class="ion-close"></i>
-        </button>
-
-        <!-- LOGO -->
-        <div class="topbar-left">
-            <div class="text-center">
-                <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
-                <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
+<div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                            <h1 class="title2">Excell On </h1>
+                        </div>
+                        <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                            <h2 class="title3">Nâng tầm giá trị</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container ">
+    <div class="area-padding">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img mb-5">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        Kshiti Ghelani
+                    </h5>
+                    <h6>
+                        Web Developer and Designer
+                    </h6>
+                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <div class="tab-menu">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" style="border-bottom: 1px solid #dee2e6;" role="tablist">
+                            <li class="active">
+                                <a href="#p-view-1" role="tab" data-toggle="tab" aria-expanded="true">Thông tin tài khoản</a>
+                            </li>
+                            <li class="">
+                                <a href="#p-view-2" role="tab" data-toggle="tab" aria-expanded="false">Lịch Sử Giao Dịch</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" name="btnAddMore" value="Edit Profile" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br />
+                    <a href="">Bootsnipp Profile</a><br />
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br />
+                    <a href="">Web Developer</a><br />
+                    <a href="">WordPress</a><br />
+                    <a href="">WooCommerce</a><br />
+                    <a href="">PHP, .Net</a><br />
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="p-view-1">
+                        <div class="tab-inner">
+                            <div class="event-content head-team">
+                                <h4>Thông tin tài khoản</h4>
+                                <p>
+                                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus
+                                    adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut,
+                                    laborum sequi.
+                                </p>
+                                <p>
+                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto
+                                    ducimus, doloribus fuga itaque omnis placeat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="p-view-2">
+                        <div class="tab-inner">
+                            <div class="event-content head-team">
+                                <h4>Lịch sử giao dịch</h4>
+                                <p>
+                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto
+                                    ducimus, doloribus fuga itaque omnis.
+                                </p>
+                                <p>
+                                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus
+                                    adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="sidebar-inner slimscrollleft">
-
-            <div id="sidebar-menu">
-                <ul>
-
-                    <li>
-                        <a href="@Url.Action("Index","Dashboard", new {Area = "Customer"})" class="waves-effect"><i class="mdi mdi-airplay"></i><span> Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a href="mywallet.html" class="waves-effect"><i class="mdi mdi-wallet"></i><span> Service </span></a>
-                    </li>
-                    <li>
-                        <a href="mywallet.html" class="waves-effect"><i class="mdi mdi-wallet"></i><span> Bill </span></a>
-                    </li>
-                    <li>
-                        <a href="calendar.html" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> Campaign History </span></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        </div> <!-- end sidebarinner -->
     </div>
-    <!-- Left Sidebar End -->
-}
 
-@section TopBar
-{
-    <!-- Top Bar Start -->
-    <div class="topbar">
-
-        <nav class="navbar-custom">
-
-            <ul class="list-inline float-right mb-0">
-                <!-- language-->
-                <li class="list-inline-item dropdown notification-list hide-phone">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect text-white" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        English <img src="../../../../Content/DashboardAssets/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt="" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right language-switch">
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
-                        <a class="dropdown-item" href="#"><img src="../../../../Content/DashboardAssets/assets/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
-                    </div>
-                </li>
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="ti-email noti-icon"></i>
-                        <span class="badge badge-danger noti-icon-badge">5</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
-                        </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon"><img src="../../../../Content/DashboardAssets/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                            <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <i class="ti-bell noti-icon"></i>
-                        <span class="badge badge-success noti-icon-badge">23</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
-                        </div>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                            <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-message"></i></div>
-                            <p class="notify-details"><b>New Message received</b><small class="text-muted">You have 87 unread messages</small></p>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-warning"><i class="mdi mdi-martini"></i></div>
-                            <p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                        </a>
-
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            View All
-                        </a>
-
-                    </div>
-                </li>
-
-                <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        @{
-                            Company comp = new Company(); ;
-                            comp = (Company)Session["CompanyLogin"];
-                        }
-                        <img src="@comp.Logo" alt="user" class="rounded-circle">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5>Welcome</h5>
-                        </div>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                        <a class="dropdown-item" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="@Url.Action("Logout","Login", new {Area = "Customer"})"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
-                    </div>
-                </li>
-
-            </ul>
-
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <button class="button-menu-mobile open-left waves-light waves-effect">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                </li>
-                <li class="hide-phone app-search">
-                    <form role="search" class="">
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <a href=""><i class="fa fa-search"></i></a>
-                    </form>
-                </li>
-            </ul>
-
-            <div class="clearfix"></div>
-
-        </nav>
-
-    </div>
-    <!-- Top Bar End -->
-}
-
-<div class="row">
-    @foreach (var item1 in Model)
-    {
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="pri_table_list">
-                <h3>@Html.DisplayFor(modelItem => item1.Name) <br /> <span>@Html.DisplayFor(modelItem => item1.Price) $</span></h3>
-                <ol>
-                    <li class="check">Online system</li>
-                    <li class="check cross">Full access</li>
-                    <li class="check">Free apps</li>
-                    <li class="check">Multiple slider</li>
-                    <li class="check cross">Free domin</li>
-                    <li class="check cross">Support unlimited</li>
-                    <li class="check">Payment online</li>
-                    <li class="check cross">Cash back</li>
-                </ol>
-                <input class="btn btn-default btn-light" value="Add to Campaign" onclick="location.href = '#'"/>
-            </div>
-        </div>
-    }
 </div>
