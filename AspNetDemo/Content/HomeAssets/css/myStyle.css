@@ -68,7 +68,9 @@
 .mt-4 {
     margin-top: 10px
 }
-
+.mb-5{
+    margin-bottom: 20px
+}
 .error {
     display: none
 }
@@ -93,8 +95,8 @@
 
 .title-register {
     text-align: center;
-    border-bottom: 1px solid;
-    padding-bottom: 10px
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
 }
 .bg-mute {
     background: #EFEFEF;
@@ -115,3 +117,8 @@
         width: 100%
     }
 }
+/*profile company*/
+.tab-content{
+    border: none
+}
+
