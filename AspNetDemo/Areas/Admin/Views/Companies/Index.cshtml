@@ -86,12 +86,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
                                     </li>
-                                    @*<li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("ListOrder_Active","Dashboard", new {Area = "Admin"})">Đơn hàng xác nhận</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("ListOrder_Deactive","Dashboard", new {Area = "Admin"})">Đơn hàng chưa xác nhận</a>
-                                        </li>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ListOrder_Active","OrderManagment", new {Area = "Admin"})">Đơn hàng xác nhận</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

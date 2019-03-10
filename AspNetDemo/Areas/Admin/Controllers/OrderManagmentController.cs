@@ -34,8 +34,6 @@ namespace AspNetDemo.Areas.Admin.Controllers
                 ViewBag.ThongBao = "Không tìm thấy sản phẩm nào";
                 return View(db.OrderServices.OrderBy(n => n.Company.Name).ToPagedList(pageNumber, pageSize));
             }
-
-
             return View(listKQTK.OrderBy(n => n.Company.Name).ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Details(int? id)
@@ -99,28 +97,13 @@ namespace AspNetDemo.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            else if (order.Status == 2)
-            {
-                order.Status = 3;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else if (order.Status == 4)
-            {
-                order.Status = 1;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else if (order.Status == 5)
-            {
-                order.Status = 2;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            //else if (order.Status == 2)
+            //{
+            //    order.Status = 3;
+            //    db.Entry(order).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
             return View("Index");
         }
 

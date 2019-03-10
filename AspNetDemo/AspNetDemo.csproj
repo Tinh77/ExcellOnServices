@@ -146,7 +146,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CompaniesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderManagmentController.cs" />
@@ -2522,13 +2521,6 @@
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernote4c4d.ttf" />
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernote4c4d.woff" />
     <Content Include="Content\DashboardAdmin\assets\vendor\summernote\editor-fonts\summernoted41d.eot" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListEmployee.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeActive.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListEmployeeDeactive.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListServices.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListOrder_Active.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListOrder_Deactive.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -2551,7 +2543,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Areas\Admin\Views\Dashboard\ListCompany.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RegisterAdmin\Index.cshtml" />
     <Content Include="Areas\Customer\Views\_ViewStart.cshtml" />
@@ -2565,7 +2556,6 @@
     <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrderManagment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrderManagment\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Companies\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Companies\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Companies\Details.cshtml" />

@@ -35,7 +35,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
                     {
                         Session["CompanyLogin"] = company;
                         CurCompany = company;
-                        return RedirectToAction("Index");
+                        return Redirect("/Home/Index");
                     }
                     else
                     {
