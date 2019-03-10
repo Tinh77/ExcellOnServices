@@ -21,10 +21,25 @@ namespace AspNetDemo.Areas.Admin.Controllers
         {
             var pageNumber = page ?? 1;
             var pageSize = 5;
-            var companies = db.Companies.OrderBy(c => c.Name).ToPagedList(pageNumber,pageSize);
+            var companies = db.Companies.OrderBy(c => c.Username).ToPagedList(pageNumber,pageSize);
             return View(companies);
         }
+        [HttpPost]
+        public ActionResult Index(FormCollection f, int? page)
+        {
+            var sTuKhoa = f["txtTimKiem"].ToString();
+            List<Company> listKQTK = db.Companies.Where(n => n.Name.Contains(sTuKhoa)).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = 5;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy sản phẩm nào";
+                return View(db.Companies.OrderBy(n => n.Name).ToPagedList(pageNumber, pageSize));
+            }
 
+
+            return View(listKQTK.OrderBy(n => n.Name).ToPagedList(pageNumber, pageSize));
+        }
         // GET: Admin/Companies/Details/5
         public ActionResult Details(int? id)
         {

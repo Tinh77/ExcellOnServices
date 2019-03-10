@@ -22,7 +22,22 @@ namespace AspNetDemo.Areas.Admin.Controllers
             var pageSize = 5;
             return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber,pageSize));
         }
+        [HttpPost]
+        public ActionResult Index(FormCollection f, int? page)
+        {
+            var sTuKhoa = f["txtTimKiem"].ToString();
+            List<OrderService> listKQTK = db.OrderServices.Where(n => n.Company.Name.Contains(sTuKhoa)).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = 5;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy sản phẩm nào";
+                return View(db.OrderServices.OrderBy(n => n.Company.Name).ToPagedList(pageNumber, pageSize));
+            }
 
+
+            return View(listKQTK.OrderBy(n => n.Company.Name).ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)

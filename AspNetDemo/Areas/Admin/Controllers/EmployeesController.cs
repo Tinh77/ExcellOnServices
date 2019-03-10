@@ -25,7 +25,22 @@ namespace AspNetDemo.Areas.Admin.Controllers
             var employees = db.Employees.OrderBy(e => e.Username).ToPagedList(pageNumber,pageSize);
             return View(employees);
         }
+        [HttpPost]
+        public ActionResult Index(FormCollection f, int? page)
+        {
+            var sTuKhoa = f["txtTimKiem"].ToString();
+            List<Models.Employee> listKQTK = db.Employees.Where(n => n.Username.Contains(sTuKhoa)).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = 5;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy sản phẩm nào";
+                return View(db.Employees.OrderBy(n => n.Username).ToPagedList(pageNumber, pageSize));
+            }
 
+
+            return View(listKQTK.OrderBy(n => n.Username).ToPagedList(pageNumber, pageSize));
+        }
         // GET: Admin/Employees/Details/5
         public ActionResult Details(int? id)
         {
