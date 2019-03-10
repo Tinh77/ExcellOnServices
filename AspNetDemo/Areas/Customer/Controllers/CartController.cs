@@ -15,7 +15,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
     {
         private const string EMAIL = "excellonservice123@gmail.com";
         private const string PASSAPP = "kimlmjniyhctbguo";
-        private const string SUBJECT = "Bạn đã đặt hàng thành công!";
+        private const string SUBJECT = "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!";
 
         ExcellOnServicesContext db = new ExcellOnServicesContext();
         Company comp = LoginController.CurCompany;
@@ -116,32 +116,32 @@ namespace AspNetDemo.Areas.Customer.Controllers
         [System.Web.Mvc.NonAction]
         public void SendEmail(string email)
         {
-            Company cus = (Company)Session["Customer"];
             var fromEmail = new MailAddress(EMAIL, "Excell On Service");
             var toEmail = new MailAddress(email);
             string subject = SUBJECT;
             var fromEmailPassword = PASSAPP;
 
-            var ord = db.OrderServices.Where(x => x.Company_Id == cus.Id).ToList().OrderByDescending(i => i.Id)
+            var ord = db.OrderServices.Where(x => x.Company_Id == comp.Id).ToList().OrderByDescending(i => i.Id)
                 .FirstOrDefault();
 
-            string itemText = null;
+            //string itemText = null;
 
-            var itemOrd = db.OrderDetails.Where(x => x.OrderService_Id == ord.Id).ToList();
-
-            foreach (var item in itemOrd)
-            {
-                var service = db.Services.Where(x => x.Company_Id == item.id).FirstOrDefault();
-                itemText += @"<tr class=""item"">
-                <td>"
-                           + service.Name + " " + "*" + item.NumberOfEmployee +
-                           @"</td>
+            //var itemOrd = db.OrderDetails.Where(x => x.OrderService_Id == ord.Id).ToList();
+            //Debug.WriteLine(itemOrd);
+            //foreach (var item in itemOrd)
+            //{
+            //    Debug.WriteLine(item);
+            //    var service = db.Services.Where(x => x.Company_Id == item.id).FirstOrDefault();
+            //    itemText += @"<tr class=""item"">
+            //    <td>"
+            //               + service.Name + " " + "*" + item.NumberOfEmployee +
+            //               @"</td>
                 
-                <td>"
-                           + item.NumberOfEmployee * Int32.Parse(item.Service.Price) +
-                           @"</td>
-            </tr>";
-            }
+            //    <td>"
+            //               + item.NumberOfEmployee * Int32.Parse(item.Service.Price) +
+            //               @"</td>
+            //</tr>";
+            //}
 
             string body = @"<!doctype html><html><head><meta charset=""utf-8""><title>A simple, clean, and responsive HTML invoice template</title><style>.invoice-box {max-width: 800px;margin: auto;
         padding: 30px;
@@ -249,7 +249,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
                             <td>
                                 Invoice #:" + ord.Id + @"<br>" +
                                 @"Created: " + DateTime.Now +
-                                "<br> PaymentDate:" + " Ngày kết thúc" +
+                                "<br> PaymentDate:" + "" +
                             @"</td>
                         </tr>
                     </table>
@@ -268,8 +268,8 @@ namespace AspNetDemo.Areas.Customer.Controllers
                             
                             <td>
                                 Acme Corp.<br>" +
-                                cus.Name + "<br>" +
-                                cus.Email +
+                                comp.Name + "<br>" +
+                                comp.Email +
                            @"</td>
                         </tr>
                     </table>
@@ -304,12 +304,12 @@ namespace AspNetDemo.Areas.Customer.Controllers
                 <td>
                     Price
                 </td>
-            </tr>" + itemText +
+            </tr>" + "itemText" +
 
             @"<tr class=""total"">
                 <td></td> 
                 <td>
-                   Total:" + "$" + ord.TotalPrice +
+                   Total:" + "$" + ord.TotalPrice + 
                @"</td>
             </tr>
         </table>

@@ -23,6 +23,13 @@ namespace AspNetDemo.Areas.Admin.Controllers
             return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber,pageSize));
         }
 
+        public ActionResult ListOrder_Active(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            return View(db.OrderServices.OrderBy(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber, pageSize));
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -84,28 +91,13 @@ namespace AspNetDemo.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            else if (order.Status == 2)
-            {
-                order.Status = 3;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else if (order.Status == 4)
-            {
-                order.Status = 1;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else if (order.Status == 5)
-            {
-                order.Status = 2;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            //else if (order.Status == 2)
+            //{
+            //    order.Status = 3;
+            //    db.Entry(order).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
             return View("Index");
         }
 

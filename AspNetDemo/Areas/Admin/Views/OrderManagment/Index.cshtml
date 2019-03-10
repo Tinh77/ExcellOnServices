@@ -166,12 +166,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="@Url.Action("Index","OrderManagment", new {Area = "Admin"})">Danh sách đơn hàng hiện tại</a>
                                     </li>
-                                    @*<li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("ListOrder_Active","Dashboard", new {Area = "Admin"})">Đơn hàng xác nhận</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("ListOrder_Deactive","Dashboard", new {Area = "Admin"})">Đơn hàng chưa xác nhận</a>
-                                        </li>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("ListOrder_Active","OrderManagment", new {Area = "Admin"})">Đơn hàng xác nhận</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -204,7 +201,7 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Email</th>
-                                                            <th>.Name</th>
+                                                            <th>Name</th>
                                                             <th>CreatedAt</th>
                                                             <th>PaymentDate</th>
                                                             <th>TotalPrice</th>
@@ -235,16 +232,7 @@
                                                                             statusDisplay = "Accepted";
                                                                             break;
                                                                         case 2:
-                                                                            statusDisplay = "On Shipping";
-                                                                            break;
-                                                                        case 3:
                                                                             statusDisplay = "Done";
-                                                                            break;
-                                                                        case 4:
-                                                                            statusDisplay = "Pay With Paypal";
-                                                                            break;
-                                                                        case 5:
-                                                                            statusDisplay = "Pay With Amazon";
                                                                             break;
                                                                         default:
                                                                             statusDisplay = "Unknown";
@@ -253,7 +241,6 @@
                                                                 }
                                                                 <td>@statusDisplay</td>
                                                                 <td>
-                                                                    @*show chi tiết đơn hàng theo modal (làm sau)*@
                                                                     <div class="table-data-feature">
                                                                         @{
                                                                             switch (item.Status)
@@ -265,13 +252,9 @@
                                                                                     @Html.ActionLink("Accpeted", "ChangeStatus", new { id = item.Id })
                                                                                     break;
                                                                                 case 1:
-                                                                                    @Html.ActionLink("On Shipping", "ChangeStatus", new { id = item.Id })
-                                                                                    break;
-                                                                                case 2:
                                                                                     @Html.ActionLink("Done", "ChangeStatus", new { id = item.Id })
                                                                                     break;
                                                                                 default:
-
                                                                                     break;
                                                                             }
                                                                         }
