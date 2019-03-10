@@ -2208,6 +2208,8 @@
     <Content Include="Content\HomeAssets\css\style.css" />
     <Content Include="Content\HomeAssets\img\about\1.jpg" />
     <Content Include="Content\HomeAssets\img\about\2.jpg" />
+    <Content Include="Content\HomeAssets\img\about\hethongbi.jpg" />
+    <Content Include="Content\HomeAssets\img\about\SocialNetwork.jpg" />
     <Content Include="Content\HomeAssets\img\apple-touch-icon.png" />
     <Content Include="Content\HomeAssets\img\background\bg1.jpg" />
     <Content Include="Content\HomeAssets\img\background\gihang.png" />
@@ -2220,6 +2222,7 @@
     <Content Include="Content\HomeAssets\img\blog\6.jpg" />
     <Content Include="Content\HomeAssets\img\blog\b02.jpg" />
     <Content Include="Content\HomeAssets\img\favicon.png" />
+    <Content Include="Content\HomeAssets\img\hethongbi.jpg" />
     <Content Include="Content\HomeAssets\img\icon\confirm.png" />
     <Content Include="Content\HomeAssets\img\icon\delete.png" />
     <Content Include="Content\HomeAssets\img\icon\help.png" />

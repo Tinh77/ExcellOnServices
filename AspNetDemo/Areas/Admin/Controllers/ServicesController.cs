@@ -25,7 +25,22 @@ namespace AspNetDemo.Areas.Admin.Controllers
             var services = db.Services.OrderBy(s => s.Name).ToPagedList(pageNumber,pageSize);
             return View(services);
         }
+        [HttpPost]
+        public ActionResult Index(FormCollection f, int? page)
+        {
+            var sTuKhoa = f["txtTimKiem"].ToString();
+            List<Service> listKQTK = db.Services.Where(n => n.Name.Contains(sTuKhoa)).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = 5;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy sản phẩm nào";
+                return View(db.Services.OrderBy(n => n.Name).ToPagedList(pageNumber, pageSize));
+            }
 
+
+            return View(listKQTK.OrderBy(n => n.Name).ToPagedList(pageNumber, pageSize));
+        }
         // GET: Admin/Services/Details/5
         public ActionResult Details(int? id)
         {
