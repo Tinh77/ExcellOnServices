@@ -26,7 +26,7 @@ namespace AspNetDemo.Areas.Admin.Controllers
         public ActionResult Index(FormCollection f, int? page)
         {
             var sTuKhoa = f["txtTimKiem"].ToString();
-            List<OrderService> listKQTK = db.OrderServices.Where(n => n.Company.Name.Contains(sTuKhoa)).ToList();
+            List<OrderService> listKQTK = db.OrderServices.Where(n => n.Company.Name.Contains(sTuKhoa)).Where(n=>n.Company.Email.Contains(sTuKhoa)).Where(n=>n.Company.Id.Equals(sTuKhoa)).ToList();
             int pageNumber = (page ?? 1);
             int pageSize = 5;
             if (listKQTK.Count == 0)
