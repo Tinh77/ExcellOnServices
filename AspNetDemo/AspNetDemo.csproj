@@ -156,6 +156,7 @@
     <Compile Include="Areas\Customer\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Customer\Controllers\LoginController.cs" />
     <Compile Include="Areas\Customer\Controllers\OrderHistoryController.cs" />
+    <Compile Include="Areas\Customer\Controllers\PageNotFoundController.cs" />
     <Compile Include="Areas\Customer\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Controllers\DashboardController.cs" />
@@ -2572,6 +2573,7 @@
     <Content Include="Areas\Admin\Views\Services\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\PageNotFound\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
