@@ -155,6 +155,7 @@
     <Compile Include="Areas\Customer\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Customer\Controllers\LoginController.cs" />
     <Compile Include="Areas\Customer\Controllers\OrderHistoryController.cs" />
+    <Compile Include="Areas\Customer\Controllers\PageNotFoundController.cs" />
     <Compile Include="Areas\Customer\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Employee\Controllers\DashboardController.cs" />
@@ -2206,6 +2207,8 @@
     <Content Include="Content\HomeAssets\css\style.css" />
     <Content Include="Content\HomeAssets\img\about\1.jpg" />
     <Content Include="Content\HomeAssets\img\about\2.jpg" />
+    <Content Include="Content\HomeAssets\img\about\hethongbi.jpg" />
+    <Content Include="Content\HomeAssets\img\about\SocialNetwork.jpg" />
     <Content Include="Content\HomeAssets\img\apple-touch-icon.png" />
     <Content Include="Content\HomeAssets\img\background\bg1.jpg" />
     <Content Include="Content\HomeAssets\img\background\gihang.png" />
@@ -2218,6 +2221,7 @@
     <Content Include="Content\HomeAssets\img\blog\6.jpg" />
     <Content Include="Content\HomeAssets\img\blog\b02.jpg" />
     <Content Include="Content\HomeAssets\img\favicon.png" />
+    <Content Include="Content\HomeAssets\img\hethongbi.jpg" />
     <Content Include="Content\HomeAssets\img\icon\confirm.png" />
     <Content Include="Content\HomeAssets\img\icon\delete.png" />
     <Content Include="Content\HomeAssets\img\icon\help.png" />
@@ -2562,7 +2566,7 @@
     <Content Include="Areas\Admin\Views\Services\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\OrderManagment\ListOrder_Active.cshtml" />
+    <Content Include="Areas\Customer\Views\PageNotFound\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
