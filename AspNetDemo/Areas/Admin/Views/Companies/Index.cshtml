@@ -208,7 +208,12 @@
                 <!-- ============================================================== -->
                 <div class="col-12">
                     <div class="card">
-                        <h5 class="card-header">Recent Orders</h5>
+                        <div class="d-flex border-bottom">
+                            <h5 class="admin-title">Recent Orders</h5>
+                            <div class="admin-title ml-auto">
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                            </div>
+                        </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table">
@@ -248,29 +253,12 @@
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
             </div>
-            <div class="row">
 
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
-                <div class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div>
-                                Page @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount)
-                            </div>
-                            <div>
-                                @Html.PagedListPager(Model, page => Url.Action("Index", new {page = page}))
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="text-md-right footer-links d-none d-sm-block">
-                                    <a href="javascript: void(0);">About</a>
-                                    <a href="javascript: void(0);">Support</a>
-                                    <a href="javascript: void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="d-flex card">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                 </div>
                 <!-- ============================================================== -->
                 <!-- end footer -->
@@ -281,4 +269,3 @@
             <!-- ============================================================== -->
         </div>
     </div>
-</div>
