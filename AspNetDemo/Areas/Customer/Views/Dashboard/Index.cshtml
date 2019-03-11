@@ -4,8 +4,8 @@
 @using PagedList.Mvc
 @{
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 <div class="header-bg page-area">
@@ -37,13 +37,15 @@
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                    <h5>
-                        Kshiti Ghelani
-                    </h5>
-                    <h6>
-                        Web Developer and Designer
-                    </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    @{
+                        Company comp = new Company();
+                        comp = (Company)Session["CompanyLogin"];
+                        if (comp != null)
+                        {
+                            <h5>@comp.Name</h5>
+                            <h6>@comp.Email</h6>
+                        }
+                    }
                     <div class="tab-menu">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" style="border-bottom: 1px solid #dee2e6;" role="tablist">
@@ -116,7 +118,6 @@
                                             <th>CreatedAt</th>
                                             <th>PaymentDate</th>
                                             <th>TotalPrice</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,48 +130,6 @@
                                                 <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.PaymentDate)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
-                                                @{
-                                                    string statusDisplay = "";
-                                                    switch (item.Status)
-                                                    {
-                                                        case -1:
-                                                            statusDisplay = "Canceled";
-                                                            break;
-                                                        case 0:
-                                                            statusDisplay = "Processing";
-                                                            break;
-                                                        case 1:
-                                                            statusDisplay = "Accepted";
-                                                            break;
-                                                        case 2:
-                                                            statusDisplay = "Done";
-                                                            break;
-                                                        default:
-                                                            statusDisplay = "Unknown";
-                                                            break;
-                                                    }
-                                                }
-                                                <td>@statusDisplay</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        @{
-                                                            switch (item.Status)
-                                                            {
-                                                                case -1:
-                                                                    @Html.ActionLink("Re Open", "ReOpen", new { id = item.Id })
-                                                                    break;
-                                                                case 0:
-                                                                    @Html.ActionLink("Accpeted", "ChangeStatus", new { id = item.Id })
-                                                                    break;
-                                                                case 1:
-                                                                    @Html.ActionLink("Done", "ChangeStatus", new { id = item.Id })
-                                                                    break;
-                                                                default:
-                                                                    break;
-                                                            }
-                                                        }
-                                                    </div>
-                                                </td>
                                             </tr>
                                         }
                                     </tbody>

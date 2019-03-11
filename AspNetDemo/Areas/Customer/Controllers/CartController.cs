@@ -25,7 +25,10 @@ namespace AspNetDemo.Areas.Customer.Controllers
         {
             return View();
         }
-
+        public ActionResult Success()
+        {
+            return View();
+        }
         public int isExisting([FromUri] int id)
         {
             List<OrderDetail> cart = (List<OrderDetail>) Session["cart"];
@@ -243,7 +246,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
                     <table>
                         <tr>
                             <td class=""title"">
-                                <img src=""https://i.imgur.com/PxlYgOA.png"" style=""width:100%; max-width:300px;"">
+                                <img src=""https://i.imgur.com/NHBN7Kn.png"" style=""width:100%; max-width:300px;"">
                             </td>
                             
                             <td>

@@ -1,24 +1,41 @@
-﻿@using AspNetDemo.Models
+﻿@using System.Collections.Specialized
+@using AspNetDemo.Models
 
 @{
     ViewBag.Title = "Success";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .title-success {
+        color: #3EC1D5;
+    }
+    .success-page {
+        padding: 100px 0px 80px;
+    }
+</style>
 
-
-<div class="alert alert-success">
-    <strong>Success!</strong>  Đã nhận được đơn đặt hàng của bạn. Nhấp chuột <a href="@Url.Action("Index","Home", new {area = ""})">here</a> trở về trang chủ
+<div class="card text-center success-page">
+    <div class="card-body">
+        <h3 class="title-success text-uppercase">Đăng ký thành công </h3>
+        <p>Cảm ơn bạn đã sử dụng dịch vụ của Excell-on Service</p>
+        <div class="alert alert-success">
+            <h2>Đã gửi</h2>
+            <p>Đơn hàng của bạn đang chờ xử lý</p>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        Hãy kiểm tra email của bạn để xem chi tiết về đơn hàng5
+    </div>
 </div>
 
-
 @section Scripts
-{
-    <script>
-        // auto reload 3s
-        var timer = setTimeout(function() {
-            window.location = '@Url.Action("Index","Home", new {area = ""})';
-        }, 3000);
-    </script>
+    {
+        <script>
+            // auto reload 3s
+            var timer = setTimeout(function() {
+                window.location = '@Url.Action("Index","Home", new {area = ""})';
+            }, 3000);
+        </script>
 
-}
+    }
 
