@@ -31,6 +31,23 @@ namespace AspNetDemo.Areas.Admin.Controllers
                 throw;
             }
         }
+
+        public ActionResult Active_Order(int? page)
+        {
+            try
+            {
+                var pageNumber = page ?? 1;
+                var pageSize = 5;
+                return View(db.OrderServices.Where(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber, pageSize));
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
+            }
+        }
+
         [HttpPost]
         public ActionResult Index(FormCollection f, int? page)
         {

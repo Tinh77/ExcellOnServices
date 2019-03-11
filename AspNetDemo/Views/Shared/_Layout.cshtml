@@ -32,6 +32,7 @@
     <link href="../../Content/HomeAssets/css/myStyle.css" rel="stylesheet">
     <!-- datetime piker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js"></script>
 </head>
 <body>
     <header>
@@ -87,6 +88,7 @@
                                             {
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li><a href="@Url.Action("Index","Dashboard", new {area = "Customer"})">Trang cá nhân</a></li>
+                                                    <li><a href="@Url.Action("Login", "LoginAdmin", new {area = "Admin"})">Admin</a></li>
                                                     <li><a href="@Url.Action("Logout", "Login", new {area = "Customer"})">Đăng xuất</a></li>
                                                 </ul>
                                             }
@@ -207,6 +209,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../../Content/HomeAssets/lib/jquery/jquery.min.js"></script>
     <script src="../../Content/HomeAssets/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Content/HomeAssets/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -239,6 +242,7 @@
         })();
     </script>
     <!--End of Tawk.to Script-->
+    
     @RenderSection("scripts", required: false)
 
 
