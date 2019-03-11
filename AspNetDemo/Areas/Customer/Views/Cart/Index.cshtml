@@ -59,11 +59,11 @@ else
                     <th>Đơn giá </th>
                     <th>Tổng số phụ</th>
                 </tr>
-                @foreach (var item in (List<OrderDetail>) Session["cart"])
+                @foreach (var item in (List<OrderDetail>)Session["cart"])
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)" class="btn btn-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a id="btn-delete"  class="btn btn-danger btn-sm btn-delete-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
                             @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
                         </td>
                         <td>@item.Service.Id</td>
@@ -118,3 +118,49 @@ else
     <div class="clearfix"></div>
 }
 
+
+<script>
+    $('#btn-delete').click(
+        function removeCart() {
+            var id = $(this).attr('href');
+            swal({
+                title: "Are you sure ?",
+                text: "Bạn có chắc muốn xoá dịch vụ này không?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Đồng ý',
+                cancelButtonText: 'Huỷ bỏ',
+                buttonsStyling: false
+            }).then(function () {
+                $.ajax({
+                    'url': '/Customer/Cart/Delete/',
+                    'method': 'DELETE',
+                    'data': {
+                        id = id
+                    },
+                    success: function (response) {
+                        swal({
+                            text: 'Deleted!',
+                            type: 'success',
+                            confirmButtonClass: "btn btn-success",
+                            buttonsStyling: false
+                        })
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2 * 1000);
+                    },
+                    error: function () {
+                        swal({
+                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+                            type: 'warning',
+                            confirmButtonClass: "btn btn-danger",
+                            buttonsStyling: false
+                        })
+                    }
+                });
+            });
+            return false;
+        });    
+</script>

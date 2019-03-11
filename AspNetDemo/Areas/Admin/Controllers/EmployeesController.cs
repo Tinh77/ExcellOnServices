@@ -28,7 +28,11 @@ namespace AspNetDemo.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection f, int? page)
         {
-            var sTuKhoa = f["txtTimKiem"].ToString();
+            if (Session["CompanyLogin"] == null)
+            {
+
+            }
+                var sTuKhoa = f["txtTimKiem"].ToString();
             List<Models.Employee> listKQTK = db.Employees.Where(n => n.Username.Contains(sTuKhoa)).ToList();
             int pageNumber = (page ?? 1);
             int pageSize = 5;

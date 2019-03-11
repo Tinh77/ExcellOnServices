@@ -19,14 +19,31 @@ namespace AspNetDemo.Areas.Admin.Controllers
         // GET: Admin/Companies
         public ActionResult Index(int? page)
         {
-            var pageNumber = page ?? 1;
-            var pageSize = 5;
-            var companies = db.Companies.OrderBy(c => c.Username).ToPagedList(pageNumber,pageSize);
-            return View(companies);
+            try
+            {
+                if (Session["AdminLogin"] == null)
+                {
+                    return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+                }
+                var pageNumber = page ?? 1;
+                var pageSize = 5;
+                var companies = db.Companies.OrderBy(c => c.Username).ToPagedList(pageNumber, pageSize);
+                return View(companies);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
+            }
+
         }
         [HttpPost]
         public ActionResult Index(FormCollection f, int? page)
         {
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+            }
             var sTuKhoa = f["txtTimKiem"].ToString();
             List<Company> listKQTK = db.Companies.Where(n => n.Name.Contains(sTuKhoa)).ToList();
             int pageNumber = (page ?? 1);
@@ -43,21 +60,38 @@ namespace AspNetDemo.Areas.Admin.Controllers
         // GET: Admin/Companies/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (Session["AdminLogin"] == null)
+                {
+                    return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+                }
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Company company = db.Companies.Find(id);
+                if (company == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(company);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            catch (Exception)
             {
-                return HttpNotFound();
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
             }
-            return View(company);
+
         }
 
         // GET: Admin/Companies/Create
         public ActionResult Create()
         {
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+            }
             ViewBag.Payment_Method_id = new SelectList(db.Payment_Method, "id", "Pay_Name");
             return View();
         }
@@ -83,6 +117,10 @@ namespace AspNetDemo.Areas.Admin.Controllers
         // GET: Admin/Companies/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,6 +141,7 @@ namespace AspNetDemo.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Logo,Phone,Email,Address,Status,Payment_Method_id,Username,Password")] Company company)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(company).State = EntityState.Modified;
@@ -116,6 +155,10 @@ namespace AspNetDemo.Areas.Admin.Controllers
         // GET: Admin/Companies/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
