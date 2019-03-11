@@ -57,6 +57,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <p>Số lượng nhân viên</p>
                                             <input style="width: 100%; margin-bottom: 10px" id="numberEmployee" name="NumberOfEmployee" value="5" type="number" />
+                                            <div id="number-error" class="text-danger alert alert-danger error">Bạn phải thuê ít nhất 1 nhân viên</div>
                                             @{
                                                 Company comp = new Company();
                                                 comp = (Company)Session["CompanyLogin"];
@@ -153,9 +154,17 @@
             var startDate = new Date(dates[0]).getTime();
             var endDate = new Date(dates[1]).getTime();
             var currentDate = new Date().getTime();
+            if (employee.value < 0) {
+                employee.style.border = "1px solid red";
+                $("#number-error").show();
+                return;
+            } else {
+                daterange.style.border = "1px solid #E5E5E5";
+                $("#number-error").hide();
+            }
             if (currentDate > startDate) {
                 daterange.style.border = "1px solid red";
-               $("#date-error").show();
+                $("#date-error").show();
                 return;
             }
             else {
@@ -166,7 +175,7 @@
                 var finalEndDate = new Date(endDate + 24 * 60 * 60 * 1000);
                 daterange.value = dates[0] + ' - ' + (finalEndDate.getMonth() + 1) + '/' + finalEndDate.getDate() + '/' + finalEndDate.getFullYear();
                 window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + $("#NumberOfEmployee").val() + '&date=' + daterange.value;
-                }
+            }
 
             window.location.href = '/Customer/Cart/AddtoCart?id=' + @Model.Id + '&numberOfEmployee=' + employee.value + '&date=' + daterange.value;
 
