@@ -19,7 +19,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
             {
                 return RedirectToAction("Login", "Login", new { Area = "Customer" });
             }
-            return View(db.OrderServices.OrderBy(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList());
+            return View(db.OrderServices.Where(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList());
         }
     }
 }

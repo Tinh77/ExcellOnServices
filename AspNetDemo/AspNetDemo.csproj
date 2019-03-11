@@ -2552,7 +2552,6 @@
     <Content Include="Areas\Customer\Views\OrderHistory\Index.cshtml" />
     <Content Include="Areas\Customer\Views\OrderHistory\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Employees\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
@@ -2569,6 +2568,8 @@
     <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
     <Content Include="Areas\Customer\Views\PageNotFound\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagment\Active_Order.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -138,10 +138,26 @@ namespace AspNetDemo.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Models.Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            AspNetDemo.Models.Employee cat = new AspNetDemo.Models.Employee();
+            AspNetDemo.Models.Admin adm = (AspNetDemo.Models.Admin)Session["Admin"];
+            cat = db.Employees.Find(id);
+            if (cat == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (cat.Status == 1)
+                {
+                   
+                    cat.Status = -1;
+                    db.Entry(cat).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View("Index");
+
         }
 
         protected override void Dispose(bool disposing)

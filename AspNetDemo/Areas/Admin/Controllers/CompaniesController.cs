@@ -152,34 +152,26 @@ namespace AspNetDemo.Areas.Admin.Controllers
             return View(company);
         }
 
-        // GET: Admin/Companies/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (Session["AdminLogin"] == null)
-            {
-                return RedirectToAction("Login", "LoginAdmin", new { Area = "Admin" });
-            }
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            AspNetDemo.Models.Employee emp = new AspNetDemo.Models.Employee();
+            AspNetDemo.Models.Admin adm = (AspNetDemo.Models.Admin)Session["Admin"];
+            emp = db.Employees.Find(id);
+            if (emp == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
-        }
-
-        // POST: Admin/Companies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Company company = db.Companies.Find(id);
-            db.Companies.Remove(company);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            else
+            {
+                if (emp.Status == 1)
+                {
+                    emp.Status = -1;
+                    db.Entry(emp).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View("Index");
         }
 
         protected override void Dispose(bool disposing)

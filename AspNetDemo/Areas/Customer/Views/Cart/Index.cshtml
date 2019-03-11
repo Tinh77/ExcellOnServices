@@ -63,7 +63,8 @@ else
                 {
                     <tr>
                         <td>
-                            <a id="btn-delete"  class="btn btn-danger btn-sm btn-delete-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <input type="submit" value="X" href="@item.Service.Id" class="btn btn-outline-danger btn-delete-cart">
+                            @*<a href="@item.Service.Id" class="btn btn-danger btn-sm btn-delete-cart"><i class="fa fa-times" aria-hidden="true"></i></a>*@
                             @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
                         </td>
                         <td>@item.Service.Id</td>
@@ -118,49 +119,54 @@ else
     <div class="clearfix"></div>
 }
 
+@section scripts{
+    <script type="text/javascript">
+        $('.btn-delete-cart').click(
+            function removeCat() {
+                var id = $(this).attr('href');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            'url': '/Customer/Cart/Delete/?id=' + id,
+                            'method': 'POST',
+                            'data': {
+                                id: id
+                            },
+                            success: function (response) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'),
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    },
+                                        2000);
 
-<script>
-    $('#btn-delete').click(
-        function removeCart() {
-            var id = $(this).attr('href');
-            swal({
-                title: "Are you sure ?",
-                text: "Bạn có chắc muốn xoá dịch vụ này không?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Huỷ bỏ',
-                buttonsStyling: false
-            }).then(function () {
-                $.ajax({
-                    'url': '/Customer/Cart/Delete/',
-                    'method': 'DELETE',
-                    'data': {
-                        id = id
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Deleted!',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2 * 1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
+                            },
+                            error: function () {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Some Thing Wrong',
+                                    'error'
+                                )
+                            }
+                        });
+                    } else {
+                        Swal.fire(
+                            'Cancelled',
+                            'Your data is safe :)',
+                            'error'
+                        )
                     }
                 });
-            });
-            return false;
-        });    
-</script>
+            })
+    </script>
+}

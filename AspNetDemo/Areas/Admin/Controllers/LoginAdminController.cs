@@ -35,7 +35,7 @@ namespace AspNetDemo.Areas.Admin.Controllers
                     {
                         Session["AdminLogin"] = admin;
                         CurAdmin = admin;
-                        return RedirectToAction("ListCompany", "Dashboard", new { area = "Admin" });
+                        return RedirectToAction("Index", "Companies", new { area = "Admin" });
                     }
                     else
                     {
