@@ -20,7 +20,7 @@ namespace AspNetDemo.Areas.Admin.Controllers
         {
             var pageNumber = page ?? 1;
             var pageSize = 5;
-            return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber,pageSize));
+            return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList());
         }
         [HttpPost]
         public ActionResult Index(FormCollection f, int? page)
