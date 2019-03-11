@@ -22,6 +22,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
 
         public ActionResult Login([FromUri] string email, [FromUri] string password)
         {
+
             if (Session["CompanyLogin"] == null)
             {
                 Company company = db.Companies.Where(x => x.Email == email).FirstOrDefault();

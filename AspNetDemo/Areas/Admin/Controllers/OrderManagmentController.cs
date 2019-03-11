@@ -18,9 +18,18 @@ namespace AspNetDemo.Areas.Admin.Controllers
         // GET: Admin/OrderManagment
         public ActionResult Index(int? page)
         {
-            var pageNumber = page ?? 1;
-            var pageSize = 5;
-            return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList());
+            try
+            {
+                var pageNumber = page ?? 1;
+                var pageSize = 5;
+                return View(db.OrderServices.OrderBy(x => x.Status == 0).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber, pageSize));
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
+            }
         }
         [HttpPost]
         public ActionResult Index(FormCollection f, int? page)
@@ -38,73 +47,101 @@ namespace AspNetDemo.Areas.Admin.Controllers
         }
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                OrderService order = db.OrderServices.Find(id);
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(order);
             }
-            OrderService order = db.OrderServices.Find(id);
-            if (order == null)
+            catch (Exception)
             {
-                return HttpNotFound();
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
             }
-            return View(order);
+            
         }
 
         public ActionResult Cancel(int id)
         {
-            OrderService order = new OrderService();
-            order = db.OrderServices.Find(id);
-            if (order.Status == 0)
+            try
             {
-                order.Status = -1;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                OrderService order = new OrderService();
+                order = db.OrderServices.Find(id);
+                if (order.Status == 0)
+                {
+                    order.Status = -1;
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View("Index");
             }
-            return View("Index");
+            catch (Exception)
+            {
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
+            }
         }
 
         public ActionResult ReOpen(int id)
         {
-            OrderService order = new OrderService();
-            order = db.OrderServices.Find(id);
-            if (order.Status == -1)
+            try
             {
-                order.Status = 0;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                OrderService order = new OrderService();
+                order = db.OrderServices.Find(id);
+                if (order.Status == -1)
+                {
+                    order.Status = 0;
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View("Index");
             }
-            return View("Index");
+            catch (Exception)
+            {
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
+            }
+            
         }
-
 
         public ActionResult ChangeStatus(int id)
         {
-            OrderService order = new OrderService();
-            order = db.OrderServices.Find(id);
-            if (order.Status == 0)
+            try
             {
-                order.Status = 1;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                OrderService order = new OrderService();
+                order = db.OrderServices.Find(id);
+                if (order.Status == 0)
+                {
+                    order.Status = 1;
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else if (order.Status == 1)
+                {
+                    order.Status = 2;
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View("Index");
             }
-            else if (order.Status == 1)
+            catch (Exception)
             {
-                order.Status = 2;
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PageNotFound", "PageNotFound", new { Area = "Customer" });
+                throw;
             }
-            //else if (order.Status == 2)
-            //{
-            //    order.Status = 3;
-            //    db.Entry(order).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            return View("Index");
+
+            
         }
 
     }

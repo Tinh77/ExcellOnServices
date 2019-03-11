@@ -21,7 +21,7 @@ namespace AspNetDemo.Areas.Customer.Controllers
             }
             var pageNumber = page ?? 1;
             var pageSize = 5;
-            return View(db.OrderServices.OrderBy(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList().ToPagedList(pageNumber, pageSize));
+            return View(db.OrderServices.OrderBy(x => x.Status == 2).OrderByDescending(x => x.CreatedAt).ToList());
         }
     }
 }
