@@ -1,9 +1,12 @@
-﻿@using AspNetDemo.Models
-@model IEnumerable<AspNetDemo.Models.Service>
-
+﻿@model PagedList.IPagedList<OrderService>
+@using AspNetDemo.Models
+@using PagedList
+@using PagedList.Mvc
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 <div class="header-bg page-area">
     <div class="home-overly"></div>
@@ -80,9 +83,18 @@
                             <div class="event-content head-team">
                                 <h4>Thông tin tài khoản</h4>
                                 <p>
-                                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus
-                                    adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut,
-                                    laborum sequi.
+                                    @{
+                                        Company comp = new Company();
+                                        comp = (Company)Session["CompanyLogin"];
+                                        if (comp != null)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @comp.Name
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                 </p>
                                 <p>
                                     voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto
@@ -95,14 +107,74 @@
                         <div class="tab-inner">
                             <div class="event-content head-team">
                                 <h4>Lịch sử giao dịch</h4>
-                                <p>
-                                    voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto
-                                    ducimus, doloribus fuga itaque omnis.
-                                </p>
-                                <p>
-                                    Redug Lares dolor sit amet, consectetur adipisicing elit. Animi vero excepturi magnam ducimus
-                                    adipisci voluptas, praesentium maxime necessitatibus in dolor dolores unde ab, libero quo. Aut.
-                                </p>
+                                <table id="tech-companies-1" class="table  table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Email</th>
+                                            <th>Name</th>
+                                            <th>CreatedAt</th>
+                                            <th>PaymentDate</th>
+                                            <th>TotalPrice</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <th>@Html.DisplayFor(modelItem => item.Id)</th>
+                                                <td>@Html.DisplayFor(modelItem => item.Company.Email)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Company.Name)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.PaymentDate)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                                                @{
+                                                    string statusDisplay = "";
+                                                    switch (item.Status)
+                                                    {
+                                                        case -1:
+                                                            statusDisplay = "Canceled";
+                                                            break;
+                                                        case 0:
+                                                            statusDisplay = "Processing";
+                                                            break;
+                                                        case 1:
+                                                            statusDisplay = "Accepted";
+                                                            break;
+                                                        case 2:
+                                                            statusDisplay = "Done";
+                                                            break;
+                                                        default:
+                                                            statusDisplay = "Unknown";
+                                                            break;
+                                                    }
+                                                }
+                                                <td>@statusDisplay</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        @{
+                                                            switch (item.Status)
+                                                            {
+                                                                case -1:
+                                                                    @Html.ActionLink("Re Open", "ReOpen", new { id = item.Id })
+                                                                    break;
+                                                                case 0:
+                                                                    @Html.ActionLink("Accpeted", "ChangeStatus", new { id = item.Id })
+                                                                    break;
+                                                                case 1:
+                                                                    @Html.ActionLink("Done", "ChangeStatus", new { id = item.Id })
+                                                                    break;
+                                                                default:
+                                                                    break;
+                                                            }
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
