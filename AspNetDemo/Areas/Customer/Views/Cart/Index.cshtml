@@ -63,7 +63,7 @@ else
                 {
                     <tr>
                         <td>
-                            <a href="@item.Service.Id" class="btn btn-danger btn-sm btn-delete-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a id="btn-delete"  class="btn btn-danger btn-sm btn-delete-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
                             @*@Html.ActionLink("Delete", "Delete", "Cart", new {Area = "Customer", id = item.Service.Id}, null)*@
                         </td>
                         <td>@item.Service.Id</td>
@@ -119,8 +119,8 @@ else
 }
 
 
-<script type="text/javascript">
-    $('.btn-delete-cart').click(
+<script>
+    $('#btn-delete').click(
         function removeCart() {
             var id = $(this).attr('href');
             swal({
@@ -162,5 +162,5 @@ else
                 });
             });
             return false;
-        });
+        });    
 </script>

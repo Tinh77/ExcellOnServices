@@ -2224,6 +2224,8 @@
     <Content Include="Content\HomeAssets\img\hethongbi.jpg" />
     <Content Include="Content\HomeAssets\img\icon\confirm.png" />
     <Content Include="Content\HomeAssets\img\icon\delete.png" />
+    <Content Include="Content\HomeAssets\img\icon\favicon-16x16.png" />
+    <Content Include="Content\HomeAssets\img\icon\favicon-32x32.png" />
     <Content Include="Content\HomeAssets\img\icon\help.png" />
     <Content Include="Content\HomeAssets\img\icon\logo.png" />
     <Content Include="Content\HomeAssets\img\icon\support.png" />
